@@ -1,5 +1,4 @@
 package com.twu.biblioteca.Service;
-
 import com.twu.biblioteca.model.Book;
 
 import java.util.List;
@@ -25,5 +24,9 @@ public class BookStorageService {
 
     public boolean returnBookByName(String name){
         return true;
+    }
+
+    public Book searchBookByName(String s) {
+        return null;
     }
 }

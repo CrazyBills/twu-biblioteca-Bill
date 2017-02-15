@@ -58,4 +58,27 @@ public class Book {
 
     //simple Status 0 means unavailable;
     int status;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        if (!id.equals(book.id)) return false;
+        if (!bookName.equals(book.bookName)) return false;
+        if (!author.equals(book.author)) return false;
+        return published.equals(book.published);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + bookName.hashCode();
+        result = 31 * result + author.hashCode();
+        result = 31 * result + published.hashCode();
+        return result;
+    }
 }
