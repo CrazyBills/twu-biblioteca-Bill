@@ -13,26 +13,26 @@ public class BookListViewTest {
 
     BookListView bookListView;
 
-
     @Before
-    public void setUp(){
+    public void setUp() {
 
         bookListView = new BookListView();
     }
 
-
     @Test
     public void render() throws Exception {
 
-        List<Book> testList= new ArrayList<>();
+        List<Book> testList = new ArrayList<>();
 
         testList.add(new Book(1, "Java Language", "GoodWeather", "2005"));
 
         bookListView.setBookList(testList);
 
-        String expectedString = "Here are list of books:\nID\tName\tAuthor\tYears\n1\tJava Language\tGoodWeather\t2005\n";
+        String expectedString = "Here are list of books:\nID\tName\n" +
+                "1\tJava Language\n" +
+                "please Enter the id of book to explore the details";
 
-        assertEquals(expectedString,bookListView.render());
+        assertEquals(expectedString, bookListView.render());
     }
 
 }

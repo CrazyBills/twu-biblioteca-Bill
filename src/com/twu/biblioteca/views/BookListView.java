@@ -17,18 +17,16 @@ public class BookListView implements BaseView {
 
         StringBuffer resultBuffer = new StringBuffer();
 
-        resultBuffer.append("Here are list of books:\nID\tName\tAuthor\tYears\n");
+        resultBuffer.append("Here are list of books:\nID\tName\n");
 
         bookList.stream().forEach(book -> {
             resultBuffer.append(book.getId());
             resultBuffer.append("\t");
             resultBuffer.append(book.getBookName());
-            resultBuffer.append("\t");
-            resultBuffer.append(book.getAuthor());
-            resultBuffer.append("\t");
-            resultBuffer.append(book.getPublished());
             resultBuffer.append("\n");
         });
+
+        resultBuffer.append("please Enter the id of book to explore the details");
 
         return resultBuffer.toString();
     }
