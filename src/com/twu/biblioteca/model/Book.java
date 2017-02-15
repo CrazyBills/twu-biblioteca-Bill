@@ -57,7 +57,7 @@ public class Book {
     }
 
     //simple Status 0 means unavailable;
-    int status;
+    int status = 1;
 
     @Override
     public boolean equals(Object o) {
