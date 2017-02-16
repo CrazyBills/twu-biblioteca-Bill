@@ -31,7 +31,10 @@ public class BookDetailControllerTest {
     @Test
     public void index() throws Exception {
 
-        String expectedString = "Here are details of book 1:\nID\tName\tAuthor\tPublished Years\n1\tJava Language\tGoodWeather\t2005\n";
+        String expectedString = "Here are details of book 1:\n" +
+                "ID\tName\tAuthor\tPublished Years\n" +
+                "1\tJava Language\tGoodWeather\t2005" +
+                "\n\ninput any string to return previous menu!\n";
 
         bookDetailController.index();
 

@@ -32,7 +32,6 @@ public class BibliotecaApp {
                 controllerStack.pop();
                 continue;
             } else if (input.equals("quit")) {
-
                 break;
             }
 
@@ -43,7 +42,7 @@ public class BibliotecaApp {
                 else
                     controllerStack.pop();
             } catch (UndefinedInputException e) {
-                System.out.println("Select a valid option!");
+                System.out.println("Select a valid option!\n");
             } catch (BookOperationFailException e) {
                 System.out.println(e.getMessage());
             }

@@ -56,7 +56,8 @@ public class WelcomeControllerTest {
 
         welcomeController.index();
 
-        assertEquals("Welcome to Library!\nPress any key to continue...\n",byteArrayOutputStream.toString());
+        assertEquals("Welcome to Library!\n" +
+                "input any string to continue...\n",byteArrayOutputStream.toString());
 
     }
 

@@ -34,8 +34,11 @@ public class MenuControllerTest {
     @Test
     public void indexTest() throws Exception {
 
-        String shouldReturn = "Welcome to Main Menu,Press your selection and enter:\n1. List Books\n2. Borrow Books\n3. Return Books\n4. Quit\n";
-
+        String shouldReturn =  "Welcome to Main Menu,Press your selection and enter:\n" +
+                "1. List Books\n" +
+                "2. Borrow Books\n" +
+                "3. Return Books\n" +
+                "Note that you can input 'q' to return to former menu, input 'quit' to quit\n";
         menuController.index();
 
         assertEquals(shouldReturn,byteArrayOutputStream.toString());

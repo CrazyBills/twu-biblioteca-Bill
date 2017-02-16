@@ -28,6 +28,10 @@ public class BookDetailView implements BaseView{
         buffer.append("\t");
         buffer.append(book.getPublished());
 
+        buffer.append("\n\n");
+        buffer.append("input any string to return previous menu!");
+
+
         return buffer.toString();
     }
 }
