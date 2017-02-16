@@ -17,6 +17,12 @@ public class MenuController implements BaseController {
 
         if(input.equals("1"))
             return  new BookListController();
+        else if(input.equals("2"))
+            return new BorrowBookController();
+        else if(input.equals("3"))
+            return new ReturnBookController();
+        else if(input.equals("4"))
+            return null;
         else throw new UndefinedInputException();
     }
 }

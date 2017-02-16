@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class MenuControllerTest {
@@ -33,7 +34,7 @@ public class MenuControllerTest {
     @Test
     public void indexTest() throws Exception {
 
-        String shouldReturn = "Welcome to Main Menu,Press your selection and enter:\n1. List Books\n";
+        String shouldReturn = "Welcome to Main Menu,Press your selection and enter:\n1. List Books\n2. Borrow Books\n3. Return Books\n4. Quit\n";
 
         menuController.index();
 
@@ -58,6 +59,25 @@ public class MenuControllerTest {
     @Test(expected = UndefinedInputException.class)
     public void shouldThrowUndefinedInputExceptiona() throws UndefinedInputException {
         menuController.action("a");
+    }
+
+    @Test
+    public void shouldReturnBorrowBookController() throws UndefinedInputException {
+
+        BaseController borrowBookController = menuController.action("2");
+        assertTrue(borrowBookController instanceof BorrowBookController);
+    }
+
+    @Test
+    public void shouldReturnReturnBookController() throws UndefinedInputException {
+        BaseController returnBookController = menuController.action("3");
+        assertTrue(returnBookController instanceof ReturnBookController);
+    }
+
+    @Test
+    public void shouldReturnNull() throws UndefinedInputException {
+        BaseController returnedNull = menuController.action("4");
+        assertNull(returnedNull);
     }
 
 }

@@ -19,7 +19,7 @@ public class BibliotecaApp {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (!controllerStack.isEmpty()){
+        while (!controllerStack.isEmpty()) {
 
             BaseController presentController = controllerStack.peek();
 
@@ -27,19 +27,22 @@ public class BibliotecaApp {
 
             String input = scanner.next();
 
-            if(input.equals("q")){
+            if (input.equals("q")) {
                 controllerStack.pop();
                 continue;
-            }else if(input.equals("quit")){
+            } else if (input.equals("quit")) {
 
                 break;
             }
 
             try {
                 BaseController nextAction = presentController.action(input);
-                controllerStack.push(nextAction);
+                if (nextAction != null)
+                    controllerStack.push(nextAction);
+                else
+                    controllerStack.pop();
             } catch (UndefinedInputException e) {
-                System.out.println("Unsupported command,please re-enter it!");
+                System.out.println("Select a valid option!");
             }
 
         }
