@@ -29,7 +29,7 @@ public class BookListController implements BaseController {
 
         Book bookById = bookStorageService.getBookById(id);
 
-        if ( bookById != null&& bookById.getStatus() != 0) {
+        if (bookById != null && bookById.getStatus() != 0) {
             return new BookDetailController(id);
         } else {
             throw new UndefinedInputException();

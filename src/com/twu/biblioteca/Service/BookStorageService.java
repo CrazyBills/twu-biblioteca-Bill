@@ -8,17 +8,8 @@ import java.util.stream.Collectors;
 
 public class BookStorageService {
 
-    HashMap<Integer, Book> storage;
-
     private static BookStorageService instance;
-
-    public static BookStorageService getInstance(){
-
-        if(instance == null){
-            instance = new BookStorageService();
-        }
-        return instance;
-    }
+    HashMap<Integer, Book> storage;
 
     private BookStorageService()
 
@@ -32,6 +23,14 @@ public class BookStorageService {
         storage.put(4, new Book(4, "Computer Architecture", "John", "2005"));
         storage.put(5, new Book(5, "Falling Slowly", "Bob", "2005"));
 
+    }
+
+    public static BookStorageService getInstance() {
+
+        if (instance == null) {
+            instance = new BookStorageService();
+        }
+        return instance;
     }
 
     public List<Book> getBookLists() {

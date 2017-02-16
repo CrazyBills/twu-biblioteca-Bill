@@ -4,7 +4,6 @@ import com.twu.biblioteca.views.WelcomeView;
 
 public class WelcomeController implements BaseController {
 
-
     public BaseController pressAnyKeyAction() {
 
         return new MenuController();
@@ -19,8 +18,8 @@ public class WelcomeController implements BaseController {
 
     @Override
     public BaseController action(String input) {
-        if(input!=null)
-            return  pressAnyKeyAction();
+        if (input != null)
+            return pressAnyKeyAction();
         else return null;
     }
 }

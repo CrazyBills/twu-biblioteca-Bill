@@ -6,6 +6,9 @@ import com.twu.biblioteca.views.BookDetailView;
 
 class BookDetailController implements BaseController {
 
+    BookStorageService bookStorageService = BookStorageService.getInstance();
+    private Integer bookID;
+
     public BookDetailController(Integer bookID) {
         this.bookID = bookID;
     }
@@ -13,10 +16,6 @@ class BookDetailController implements BaseController {
     public Integer getBookID() {
         return bookID;
     }
-
-    private Integer bookID;
-
-    BookStorageService bookStorageService = BookStorageService.getInstance();
 
     @Override
     public void index() {

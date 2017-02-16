@@ -18,7 +18,7 @@ public class WelcomeControllerTest {
     PrintStream printStream;
 
     @Before
-    public void initial(){
+    public void initial() {
         byteArrayOutputStream = new ByteArrayOutputStream();
         printStream = System.out;
         welcomeController = new WelcomeController();
@@ -26,12 +26,12 @@ public class WelcomeControllerTest {
     }
 
     @After
-    public void destory(){
+    public void destory() {
         System.setOut(printStream);
     }
 
     @Test
-    public void shouldReturnMenuController(){
+    public void shouldReturnMenuController() {
 
         BaseController baseController = welcomeController.pressAnyKeyAction();
 
@@ -39,25 +39,24 @@ public class WelcomeControllerTest {
 
     }
 
-
     @Test
-    public void shouldReturnNull(){
-        assertEquals(null,welcomeController.action(null));
+    public void shouldReturnNull() {
+        assertEquals(null, welcomeController.action(null));
     }
 
     @Test
-    public void shouldReturnMenuController1(){
+    public void shouldReturnMenuController1() {
         BaseController baseController = welcomeController.action("t");
         assertTrue(baseController instanceof MenuController);
     }
 
     @Test
-    public void shouldPrintWelcomeMessage(){
+    public void shouldPrintWelcomeMessage() {
 
         welcomeController.index();
 
         assertEquals("Welcome to Library!\n" +
-                "input any string to continue...\n",byteArrayOutputStream.toString());
+                "input any string to continue...\n", byteArrayOutputStream.toString());
 
     }
 

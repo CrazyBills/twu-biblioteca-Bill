@@ -2,11 +2,11 @@ package com.twu.biblioteca.views;
 
 import com.twu.biblioteca.model.Book;
 
-public class BookDetailView implements BaseView{
+public class BookDetailView implements BaseView {
 
     Book book;
 
-    public BookDetailView(Book book){
+    public BookDetailView(Book book) {
         this.book = book;
     }
 
@@ -30,7 +30,6 @@ public class BookDetailView implements BaseView{
 
         buffer.append("\n\n");
         buffer.append("input any string to return previous menu!");
-
 
         return buffer.toString();
     }

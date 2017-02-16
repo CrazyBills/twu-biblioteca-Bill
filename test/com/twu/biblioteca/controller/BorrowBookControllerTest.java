@@ -16,7 +16,6 @@ import static org.mockito.Mockito.when;
 
 public class BorrowBookControllerTest {
 
-
     BorrowBookController borrowBookController;
     ByteArrayOutputStream byteArrayOutputStream;
     PrintStream printStream;
@@ -34,22 +33,21 @@ public class BorrowBookControllerTest {
         System.setOut(printStream);
     }
 
-
     @Test
-    public void index(){
+    public void index() {
 
         borrowBookController.index();
 
         String shouldbe = "please input the id of book you want to check out:\n";
 
-        assertEquals(shouldbe,byteArrayOutputStream.toString());
+        assertEquals(shouldbe, byteArrayOutputStream.toString());
     }
 
     @Test
-    public void action() throws  UndefinedInputException, BookOperationFailException {
+    public void action() throws UndefinedInputException, BookOperationFailException {
 
         BookStorageService bookStorageService = spy(BookStorageService.getInstance());
-        Book book =  new Book(1,"Java Language","GoodWeather","2005");
+        Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(1);
         when(bookStorageService.getBookById(1)).thenReturn(book);
 
@@ -59,14 +57,14 @@ public class BorrowBookControllerTest {
 
         assertNull(action);
 
-        assertEquals("Thank you! Enjoy the book\n\n",byteArrayOutputStream.toString());
+        assertEquals("Thank you! Enjoy the book\n\n", byteArrayOutputStream.toString());
     }
 
     @Test(expected = BookOperationFailException.class)
     public void shouldFailBorrowBooks() throws UndefinedInputException, BookOperationFailException {
 
         BookStorageService bookStorageService = spy(BookStorageService.getInstance());
-        Book book =  new Book(1,"Java Language","GoodWeather","2005");
+        Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
         when(bookStorageService.getBookById(1)).thenReturn(book);
 
@@ -92,7 +90,6 @@ public class BorrowBookControllerTest {
         assertNull(action);
 
     }
-
 
 
 }

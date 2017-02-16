@@ -3,7 +3,7 @@ package com.twu.biblioteca.controller;
 import com.twu.biblioteca.Service.BookStorageService;
 import com.twu.biblioteca.views.ReturnBookView;
 
-public class ReturnBookController implements BaseController{
+public class ReturnBookController implements BaseController {
     BookStorageService bookStorageService = BookStorageService.getInstance();
 
     @Override
@@ -14,7 +14,6 @@ public class ReturnBookController implements BaseController{
 
     @Override
     public BaseController action(String input) throws UndefinedInputException, BookOperationFailException {
-
 
         try {
             Integer id = Integer.parseInt(input);

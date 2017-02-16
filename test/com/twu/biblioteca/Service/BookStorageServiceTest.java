@@ -19,7 +19,7 @@ public class BookStorageServiceTest {
     @Before
     public void setUp() throws Exception {
 
-        Constructor constructor= BookStorageService.class.getDeclaredConstructor();
+        Constructor constructor = BookStorageService.class.getDeclaredConstructor();
 
         constructor.setAccessible(true);
 
@@ -35,29 +35,24 @@ public class BookStorageServiceTest {
     @Test
     public void getBookLists() throws Exception {
 
-
-
-
         List<Book> bookLists = bookStorageService.getBookLists();
 
-        assertEquals(5,bookLists.size());
+        assertEquals(5, bookLists.size());
     }
 
     @Test
     public void getBookById() throws Exception {
 
-        Book shouldBe = new Book(1,"Java Language","GoodWeather","2005");
+        Book shouldBe = new Book(1, "Java Language", "GoodWeather", "2005");
 
-        assertEquals(shouldBe,bookStorageService.getBookById(1));
+        assertEquals(shouldBe, bookStorageService.getBookById(1));
     }
 
     @Test
     public void shouldGetNullBookById() throws Exception {
 
-
-        assertEquals(null,bookStorageService.getBookById(10));
+        assertEquals(null, bookStorageService.getBookById(10));
     }
-
 
     @Test
     public void shouldBorrowBook1() throws Exception {
@@ -66,11 +61,10 @@ public class BookStorageServiceTest {
 
         assertTrue(b);
 
-
         //Check borrow Status
         Book bookById = bookStorageService.getBookById(1);
 
-        assertEquals(0,bookById.getStatus());
+        assertEquals(0, bookById.getStatus());
     }
 
     @Test
@@ -78,7 +72,7 @@ public class BookStorageServiceTest {
 
         BookStorageService mockedService = spy(BookStorageService.getInstance());
 
-        Book book =  new Book(1,"Java Language","GoodWeather","2005");
+        Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
         when(mockedService.getBookById(1)).thenReturn(book);
 
@@ -92,7 +86,7 @@ public class BookStorageServiceTest {
 
         BookStorageService mockedService = spy(BookStorageService.getInstance());
 
-        Book book =  new Book(1,"Java Language","GoodWeather","2005");
+        Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
         when(mockedService.getBookById(1)).thenReturn(book);
 
@@ -106,7 +100,7 @@ public class BookStorageServiceTest {
 
         BookStorageService mockedService = spy(BookStorageService.getInstance());
 
-        Book book =  new Book(1,"Java Language","GoodWeather","2005");
+        Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(1);
         when(mockedService.getBookById(1)).thenReturn(book);
 
@@ -115,23 +109,21 @@ public class BookStorageServiceTest {
         assertFalse(b);
     }
 
-    public void shouldReturnBookByName(){
+    public void shouldReturnBookByName() {
 
-        Book shouldBe =  new Book(1,"Java Language","GoodWeather","2005");
+        Book shouldBe = new Book(1, "Java Language", "GoodWeather", "2005");
 
         Book book = bookStorageService.searchBookByName("Java Language");
 
-        assertEquals(shouldBe,book);
+        assertEquals(shouldBe, book);
     }
-
 
     @Test
     public void returnBookByName() throws Exception {
 
-
         BookStorageService mockedService = spy(BookStorageService.getInstance());
 
-        Book book =  new Book(1,"Java Language","GoodWeather","2005");
+        Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
         when(mockedService.searchBookByName("Java Language")).thenReturn(book);
 

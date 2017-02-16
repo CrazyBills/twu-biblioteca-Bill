@@ -7,20 +7,17 @@ import static org.junit.Assert.assertEquals;
 
 public class WelcomeViewTest {
 
-
     WelcomeView welcomeView;
 
-
     @Before
-    public void initial(){
+    public void initial() {
         welcomeView = new WelcomeView();
     }
 
-
     @Test
-    public void shouldPrintWelcome(){
+    public void shouldPrintWelcome() {
 
-        assertEquals("Welcome to Library!\ninput any string to continue...",welcomeView.render() );
+        assertEquals("Welcome to Library!\ninput any string to continue...", welcomeView.render());
     }
 
 

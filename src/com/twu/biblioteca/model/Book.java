@@ -2,6 +2,20 @@ package com.twu.biblioteca.model;
 
 public class Book {
 
+    Integer id;
+    String bookName;
+    String author;
+    String published;
+    //simple Status 0 means unavailable;
+    int status = 1;
+
+    public Book(Integer id, String bookName, String author, String published) {
+        this.id = id;
+        this.bookName = bookName;
+        this.author = author;
+        this.published = published;
+    }
+
     public String getPublished() {
         return published;
     }
@@ -35,19 +49,6 @@ public class Book {
         this.id = id;
     }
 
-    Integer id;
-
-    public Book(Integer id, String bookName, String author, String published) {
-        this.id = id;
-        this.bookName = bookName;
-        this.author = author;
-        this.published = published;
-    }
-
-    String bookName;
-    String author;
-    String published;
-
     public int getStatus() {
         return status;
     }
@@ -55,9 +56,6 @@ public class Book {
     public void setStatus(int status) {
         this.status = status;
     }
-
-    //simple Status 0 means unavailable;
-    int status = 1;
 
     @Override
     public boolean equals(Object o) {

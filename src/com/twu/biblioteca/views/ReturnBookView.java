@@ -1,6 +1,6 @@
 package com.twu.biblioteca.views;
 
-public class ReturnBookView implements BaseView{
+public class ReturnBookView implements BaseView {
 
     @Override
     public String render() {

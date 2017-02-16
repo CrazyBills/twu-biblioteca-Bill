@@ -7,9 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MenuControllerTest {
 
@@ -17,9 +15,8 @@ public class MenuControllerTest {
     ByteArrayOutputStream byteArrayOutputStream;
     PrintStream printStream;
 
-
     @Before
-    public void initial(){
+    public void initial() {
         menuController = new MenuController();
         byteArrayOutputStream = new ByteArrayOutputStream();
         printStream = System.out;
@@ -27,21 +24,21 @@ public class MenuControllerTest {
     }
 
     @After
-    public void destory(){
+    public void destory() {
         System.setOut(printStream);
     }
 
     @Test
     public void indexTest() throws Exception {
 
-        String shouldReturn =  "Welcome to Main Menu,Press your selection and enter:\n" +
+        String shouldReturn = "Welcome to Main Menu,Press your selection and enter:\n" +
                 "1. List Books\n" +
                 "2. Borrow Books\n" +
                 "3. Return Books\n" +
                 "Note that you can input 'q' to return to former menu, input 'quit' to quit\n";
         menuController.index();
 
-        assertEquals(shouldReturn,byteArrayOutputStream.toString());
+        assertEquals(shouldReturn, byteArrayOutputStream.toString());
 
     }
 
