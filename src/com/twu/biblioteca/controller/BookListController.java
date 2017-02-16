@@ -23,7 +23,7 @@ public class BookListController implements BaseController {
     }
 
     @Override
-    public BaseController action(String input) {
+    public BaseController action(String input) throws UndefinedInputException {
 
         Integer id = Integer.parseInt(input);
 
@@ -31,8 +31,8 @@ public class BookListController implements BaseController {
 
         if (bookById.getStatus() != 0 && bookById != null) {
             return new BookDetailController(id);
+        } else {
+            throw new UndefinedInputException();
         }
-
-        return null;
     }
 }
