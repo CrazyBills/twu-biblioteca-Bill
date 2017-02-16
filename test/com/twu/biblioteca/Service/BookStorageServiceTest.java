@@ -5,19 +5,25 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Constructor;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 
 public class BookStorageServiceTest {
 
-    BookStorageService bookStorageService = BookStorageService.getInstance();
+    BookStorageService bookStorageService;
 
     @Before
     public void setUp() throws Exception {
+
+        Constructor constructor= BookStorageService.class.getDeclaredConstructor();
+
+        constructor.setAccessible(true);
+
+        bookStorageService = (BookStorageService) constructor.newInstance();
 
     }
 
@@ -28,6 +34,9 @@ public class BookStorageServiceTest {
 
     @Test
     public void getBookLists() throws Exception {
+
+
+
 
         List<Book> bookLists = bookStorageService.getBookLists();
 
@@ -67,7 +76,7 @@ public class BookStorageServiceTest {
     @Test
     public void shouldBorrowFailBook1() throws Exception {
 
-        BookStorageService mockedService = spy(BookStorageService.class);
+        BookStorageService mockedService = spy(BookStorageService.getInstance());
 
         Book book =  new Book(1,"Java Language","GoodWeather","2005");
         book.setStatus(0);
@@ -81,7 +90,7 @@ public class BookStorageServiceTest {
     @Test
     public void returnBookById() throws Exception {
 
-        BookStorageService mockedService = spy(BookStorageService.class);
+        BookStorageService mockedService = spy(BookStorageService.getInstance());
 
         Book book =  new Book(1,"Java Language","GoodWeather","2005");
         book.setStatus(0);
@@ -95,7 +104,7 @@ public class BookStorageServiceTest {
     @Test
     public void shouldReturnBookFailById() throws Exception {
 
-        BookStorageService mockedService = spy(BookStorageService.class);
+        BookStorageService mockedService = spy(BookStorageService.getInstance());
 
         Book book =  new Book(1,"Java Language","GoodWeather","2005");
         book.setStatus(1);
@@ -120,7 +129,7 @@ public class BookStorageServiceTest {
     public void returnBookByName() throws Exception {
 
 
-        BookStorageService mockedService = spy(BookStorageService.class);
+        BookStorageService mockedService = spy(BookStorageService.getInstance());
 
         Book book =  new Book(1,"Java Language","GoodWeather","2005");
         book.setStatus(0);

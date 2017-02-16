@@ -20,10 +20,10 @@ public class ReturnBookController implements BaseController{
             Integer id = Integer.parseInt(input);
 
             if (bookStorageService.returnBookById(id)) {
-                System.out.println("Thank you for returning the book.");
+                System.out.println("Thank you for returning the book.\n");
                 return null;
             } else {
-                throw new BookOperationFailException("That is not a valid book to return.");
+                throw new BookOperationFailException("That is not a valid book to return.\n");
             }
 
         } catch (NumberFormatException e) {

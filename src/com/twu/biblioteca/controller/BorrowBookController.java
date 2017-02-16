@@ -21,10 +21,10 @@ public class BorrowBookController implements BaseController {
             Integer id = Integer.parseInt(input);
 
             if (bookStorageService.borrowBookId(id)) {
-                System.out.println("Thank you! Enjoy the book");
+                System.out.println("Thank you! Enjoy the book\n");
                 return null;
             } else {
-                throw new BookOperationFailException("That book is not available.");
+                throw new BookOperationFailException("That book is not available.\n");
             }
 
         } catch (NumberFormatException e) {

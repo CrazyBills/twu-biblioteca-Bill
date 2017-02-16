@@ -59,7 +59,7 @@ public class BorrowBookControllerTest {
 
         assertNull(action);
 
-        assertEquals("Thank you! Enjoy the book\n",byteArrayOutputStream.toString());
+        assertEquals("Thank you! Enjoy the book\n\n",byteArrayOutputStream.toString());
     }
 
     @Test(expected = BookOperationFailException.class)

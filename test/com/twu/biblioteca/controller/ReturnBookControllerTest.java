@@ -49,7 +49,7 @@ public class ReturnBookControllerTest {
         BaseController action = returnBookController.action("1");
         assertNull(action);
 
-        assertEquals("Thank you for returning the book.\n", byteArrayOutputStream.toString());
+        assertEquals("Thank you for returning the book.\n\n", byteArrayOutputStream.toString());
     }
 
     @Test(expected = BookOperationFailException.class)
