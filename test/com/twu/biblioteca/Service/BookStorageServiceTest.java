@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 
 public class BookStorageServiceTest {
 
-    BookStorageService bookStorageService = new BookStorageService();
+    BookStorageService bookStorageService = BookStorageService.getInstance();
 
     @Before
     public void setUp() throws Exception {

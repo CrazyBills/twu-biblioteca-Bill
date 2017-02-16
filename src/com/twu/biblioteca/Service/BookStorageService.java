@@ -10,7 +10,17 @@ public class BookStorageService {
 
     HashMap<Integer, Book> storage;
 
-    public BookStorageService()
+    private static BookStorageService instance;
+
+    public static BookStorageService getInstance(){
+
+        if(instance == null){
+            instance = new BookStorageService();
+        }
+        return instance;
+    }
+
+    private BookStorageService()
 
     {
 

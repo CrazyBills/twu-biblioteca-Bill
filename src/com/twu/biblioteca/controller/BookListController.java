@@ -9,7 +9,7 @@ import java.util.List;
 public class BookListController implements BaseController {
 
     BookListView bookListView = new BookListView();
-    BookStorageService bookStorageService = new BookStorageService();
+    BookStorageService bookStorageService = BookStorageService.getInstance();
 
     @Override
     public void index() {

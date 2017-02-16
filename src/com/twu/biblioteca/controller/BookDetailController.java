@@ -16,7 +16,7 @@ class BookDetailController implements BaseController {
 
     private Integer bookID;
 
-    private BookStorageService bookStorageService = new BookStorageService();
+    BookStorageService bookStorageService = BookStorageService.getInstance();
 
     @Override
     public void index() {
