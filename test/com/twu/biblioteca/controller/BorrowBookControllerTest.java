@@ -48,7 +48,7 @@ public class BorrowBookControllerTest {
     @Test
     public void action() throws  UndefinedInputException, BookOperationFailException {
 
-        BookStorageService bookStorageService = spy(BookStorageService.class);
+        BookStorageService bookStorageService = spy(BookStorageService.getInstance());
         Book book =  new Book(1,"Java Language","GoodWeather","2005");
         book.setStatus(1);
         when(bookStorageService.getBookById(1)).thenReturn(book);
@@ -65,7 +65,7 @@ public class BorrowBookControllerTest {
     @Test(expected = BookOperationFailException.class)
     public void shouldFailBorrowBooks() throws UndefinedInputException, BookOperationFailException {
 
-        BookStorageService bookStorageService = spy(BookStorageService.class);
+        BookStorageService bookStorageService = spy(BookStorageService.getInstance());
         Book book =  new Book(1,"Java Language","GoodWeather","2005");
         book.setStatus(0);
         when(bookStorageService.getBookById(1)).thenReturn(book);
@@ -81,7 +81,7 @@ public class BorrowBookControllerTest {
     @Test(expected = BookOperationFailException.class)
     public void shouldFailBorrowBooksWhenInputWrongID() throws UndefinedInputException, BookOperationFailException {
 
-        BookStorageService bookStorageService = spy(BookStorageService.class);
+        BookStorageService bookStorageService = spy(BookStorageService.getInstance());
 
         when(bookStorageService.getBookById(1)).thenReturn(null);
 
