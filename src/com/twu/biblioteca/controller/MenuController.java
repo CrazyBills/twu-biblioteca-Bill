@@ -1,5 +1,7 @@
 package com.twu.biblioteca.controller;
 
+import com.twu.biblioteca.Service.GoodStorageService;
+import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.views.BaseView;
 import com.twu.biblioteca.views.MenuView;
 
@@ -16,11 +18,11 @@ public class MenuController implements BaseController {
     public BaseController action(String input) throws UndefinedInputException {
 
         if (input.equals("1"))
-            return new BookListController();
+            return new GoodListController<Book>(GoodStorageService.getBookInstance());
         else if (input.equals("2"))
-            return new BorrowBookController();
+            return new BorrowGoodController<Book>(GoodStorageService.getBookInstance());
         else if (input.equals("3"))
-            return new ReturnBookController();
+            return new ReturnGoodController(GoodStorageService.getBookInstance());
         else if (input.equals("4"))
             return null;
         else throw new UndefinedInputException();

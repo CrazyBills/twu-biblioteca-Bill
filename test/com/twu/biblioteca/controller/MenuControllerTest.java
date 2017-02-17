@@ -47,7 +47,7 @@ public class MenuControllerTest {
 
         BaseController action = menuController.action("1");
 
-        assertTrue(action instanceof BookListController);
+        assertTrue(action instanceof GoodListController);
 
     }
 
@@ -65,13 +65,13 @@ public class MenuControllerTest {
     public void shouldReturnBorrowBookController() throws UndefinedInputException {
 
         BaseController borrowBookController = menuController.action("2");
-        assertTrue(borrowBookController instanceof BorrowBookController);
+        assertTrue(borrowBookController instanceof BorrowGoodController);
     }
 
     @Test
     public void shouldReturnReturnBookController() throws UndefinedInputException {
         BaseController returnBookController = menuController.action("3");
-        assertTrue(returnBookController instanceof ReturnBookController);
+        assertTrue(returnBookController instanceof ReturnGoodController);
     }
 
     @Test

@@ -1,20 +1,24 @@
 package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.Service.GoodStorageService;
-import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Good;
 import com.twu.biblioteca.views.GoodListView;
 
 import java.util.List;
 
-public class BookListController implements BaseController {
+public class GoodListController<T extends Good> implements BaseController {
 
-    GoodListView<Book> goodListView = new GoodListView();
-    GoodStorageService<Book> goodStorageService = GoodStorageService.getBookInstance();
+    GoodListView<T> goodListView = new GoodListView();
+    GoodStorageService<T> goodStorageService;
+
+    public GoodListController(   GoodStorageService<T> goodStorageService){
+        this.goodStorageService = goodStorageService;
+    }
 
     @Override
     public void index() {
 
-        List<Book> goodLists = goodStorageService.getBookLists();
+        List<T> goodLists = goodStorageService.getGoodLists();
 
         goodListView.setGoodList(goodLists);
 
@@ -27,10 +31,10 @@ public class BookListController implements BaseController {
 
         Integer id = Integer.parseInt(input);
 
-        Book bookById = goodStorageService.getBookById(id);
+        T bookById = goodStorageService.getGoodById(id);
 
         if (bookById != null && bookById.getStatus() != 0) {
-            return new BookDetailController(id);
+            return new GoodDetailController(id,goodStorageService);
         } else {
             throw new UndefinedInputException();
         }

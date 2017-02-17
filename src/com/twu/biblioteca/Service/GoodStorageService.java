@@ -35,21 +35,21 @@ public class GoodStorageService<T extends Good> {
         return bookInstance;
     }
 
-    public List<T> getBookLists() {
+    public List<T> getGoodLists() {
 
         List<T> resultList = storage.values().stream().filter(book -> book.getStatus() != 0).collect(Collectors.toList());
 
         return resultList;
     }
 
-    public T getBookById(Integer id) {
+    public T getGoodById(Integer id) {
 
         return storage.get(id);
     }
 
-    public boolean borrowBookId(Integer id) {
+    public boolean borrowGoodId(Integer id) {
 
-        T bookById = this.getBookById(id);
+        T bookById = this.getGoodById(id);
         if (bookById == null) return false;
 
         if (bookById.getStatus() != 0) {
@@ -60,8 +60,8 @@ public class GoodStorageService<T extends Good> {
         }
     }
 
-    public boolean returnBookById(Integer id) {
-        T bookById = this.getBookById(id);
+    public boolean returnGoodById(Integer id) {
+        T bookById = this.getGoodById(id);
 
         if (bookById == null) return false;
 

@@ -14,14 +14,14 @@ import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
-public class ReturnBookControllerTest {
-    ReturnBookController returnBookController;
+public class ReturnGoodControllerTest {
+    ReturnGoodController returnGoodController;
     ByteArrayOutputStream byteArrayOutputStream;
     PrintStream printStream;
 
     @Before
     public void initial() {
-        returnBookController = new ReturnBookController();
+        returnGoodController = new ReturnGoodController(GoodStorageService.getBookInstance());
         byteArrayOutputStream = new ByteArrayOutputStream();
         printStream = System.out;
         System.setOut(new PrintStream(byteArrayOutputStream));
@@ -35,7 +35,7 @@ public class ReturnBookControllerTest {
     @Test
     public void index() throws Exception {
 
-        returnBookController.index();
+        returnGoodController.index();
         assertEquals("please input the id of book you want to return:\n", byteArrayOutputStream.toString());
     }
 
@@ -44,9 +44,9 @@ public class ReturnBookControllerTest {
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
-        when(goodStorageService.getBookById(1)).thenReturn(book);
-        returnBookController.bookStorageService = goodStorageService;
-        BaseController action = returnBookController.action("1");
+        when(goodStorageService.getGoodById(1)).thenReturn(book);
+        returnGoodController.goodStorageService = goodStorageService;
+        BaseController action = returnGoodController.action("1");
         assertNull(action);
 
         assertEquals("Thank you for returning the book.\n\n", byteArrayOutputStream.toString());
@@ -58,11 +58,11 @@ public class ReturnBookControllerTest {
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(1);
-        when(goodStorageService.getBookById(1)).thenReturn(book);
+        when(goodStorageService.getGoodById(1)).thenReturn(book);
 
-        returnBookController.bookStorageService = goodStorageService;
+        returnGoodController.goodStorageService = goodStorageService;
 
-        BaseController action = returnBookController.action("1");
+        BaseController action = returnGoodController.action("1");
 
         assertNull(action);
 
@@ -73,10 +73,10 @@ public class ReturnBookControllerTest {
 
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
 
-        when(goodStorageService.getBookById(1)).thenReturn(null);
+        when(goodStorageService.getGoodById(1)).thenReturn(null);
 
-        returnBookController.bookStorageService = goodStorageService;
-        BaseController action = returnBookController.action("1");
+        returnGoodController.goodStorageService = goodStorageService;
+        BaseController action = returnGoodController.action("1");
 
         assertNull(action);
 

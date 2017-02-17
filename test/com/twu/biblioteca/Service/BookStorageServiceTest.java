@@ -39,7 +39,7 @@ public class BookStorageServiceTest {
     @Test
     public void getBookLists() throws Exception {
 
-        List<Book> bookLists = bookStorageService.getBookLists();
+        List<Book> bookLists = bookStorageService.getGoodLists();
 
         assertEquals(5, bookLists.size());
     }
@@ -49,24 +49,24 @@ public class BookStorageServiceTest {
 
         Good shouldBe = new Book(1, "Java Language", "GoodWeather", "2005");
 
-        assertEquals(shouldBe, bookStorageService.getBookById(1));
+        assertEquals(shouldBe, bookStorageService.getGoodById(1));
     }
 
     @Test
     public void shouldGetNullBookById() throws Exception {
 
-        assertEquals(null, bookStorageService.getBookById(10));
+        assertEquals(null, bookStorageService.getGoodById(10));
     }
 
     @Test
     public void shouldBorrowBook1() throws Exception {
 
-        boolean b = bookStorageService.borrowBookId(1);
+        boolean b = bookStorageService.borrowGoodId(1);
 
         assertTrue(b);
 
         //Check borrow Status
-        Book bookById = bookStorageService.getBookById(1);
+        Book bookById = bookStorageService.getGoodById(1);
 
         assertEquals(0, bookById.getStatus());
     }
@@ -78,9 +78,9 @@ public class BookStorageServiceTest {
 
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
-        when(mockedService.getBookById(1)).thenReturn(book);
+        when(mockedService.getGoodById(1)).thenReturn(book);
 
-        boolean b = mockedService.borrowBookId(1);
+        boolean b = mockedService.borrowGoodId(1);
 
         assertFalse(b);
     }
@@ -92,9 +92,9 @@ public class BookStorageServiceTest {
 
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
-        when(mockedService.getBookById(1)).thenReturn(book);
+        when(mockedService.getGoodById(1)).thenReturn(book);
 
-        boolean b = mockedService.returnBookById(1);
+        boolean b = mockedService.returnGoodById(1);
 
         assertTrue(b);
     }
@@ -106,9 +106,9 @@ public class BookStorageServiceTest {
 
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(1);
-        when(mockedService.getBookById(1)).thenReturn(book);
+        when(mockedService.getGoodById(1)).thenReturn(book);
 
-        boolean b = mockedService.returnBookById(1);
+        boolean b = mockedService.returnGoodById(1);
 
         assertFalse(b);
     }

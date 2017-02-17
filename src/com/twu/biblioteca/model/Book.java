@@ -45,6 +45,11 @@ public class Book implements Good {
         return id;
     }
 
+    @Override
+    public String getType() {
+        return "book";
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -82,7 +87,7 @@ public class Book implements Good {
 
 
     @Override
-    public String getBookDetails(){
+    public String getGoodDetails(){
         StringBuffer buffer = new StringBuffer();
 
         buffer.append("Here are details of book ");

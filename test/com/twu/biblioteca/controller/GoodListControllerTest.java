@@ -1,5 +1,7 @@
 package com.twu.biblioteca.controller;
 
+import com.twu.biblioteca.Service.GoodStorageService;
+import com.twu.biblioteca.model.Book;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,15 +12,15 @@ import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class BookListControllerTest {
+public class GoodListControllerTest {
 
-    BookListController bookListController;
+    GoodListController<Book> goodListController;
     ByteArrayOutputStream byteArrayOutputStream;
     PrintStream printStream;
 
     @Before
     public void initial() {
-        bookListController = new BookListController();
+        goodListController = new GoodListController(GoodStorageService.getBookInstance());
         byteArrayOutputStream = new ByteArrayOutputStream();
         printStream = System.out;
         System.setOut(new PrintStream(byteArrayOutputStream));
@@ -41,7 +43,7 @@ public class BookListControllerTest {
                 "5\tFalling Slowly\n" +
                 "please Enter the id of book to explore the details\n";
 
-        bookListController.index();
+        goodListController.index();
         assertEquals(expectedString, byteArrayOutputStream.toString());
 
     }
@@ -49,11 +51,11 @@ public class BookListControllerTest {
     @Test
     public void shouldReturnBookDetail1Controller() throws Exception {
 
-        BaseController action = bookListController.action("1");
+        BaseController action = goodListController.action("1");
 
-        assertTrue(action instanceof BookDetailController);
+        assertTrue(action instanceof GoodDetailController);
 
-        assertEquals(1, ((BookDetailController) action).getBookID().intValue());
+        assertEquals(1, ((GoodDetailController) action).getGoodID().intValue());
     }
 
 }

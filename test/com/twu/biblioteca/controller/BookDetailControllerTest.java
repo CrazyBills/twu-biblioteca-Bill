@@ -1,5 +1,6 @@
 package com.twu.biblioteca.controller;
 
+import com.twu.biblioteca.Service.GoodStorageService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,13 +12,13 @@ import static org.junit.Assert.assertEquals;
 
 public class BookDetailControllerTest {
 
-    BookDetailController bookDetailController;
+    GoodDetailController goodDetailController;
     ByteArrayOutputStream byteArrayOutputStream;
     PrintStream printStream;
 
     @Before
     public void initial() {
-        bookDetailController = new BookDetailController(1);
+        goodDetailController = new GoodDetailController(1, GoodStorageService.getBookInstance());
         byteArrayOutputStream = new ByteArrayOutputStream();
         printStream = System.out;
         System.setOut(new PrintStream(byteArrayOutputStream));
@@ -36,7 +37,7 @@ public class BookDetailControllerTest {
                 "1\tJava Language\tGoodWeather\t2005" +
                 "\n\ninput any string to return previous menu!\n";
 
-        bookDetailController.index();
+        goodDetailController.index();
 
         assertEquals(expectedString, byteArrayOutputStream.toString());
 

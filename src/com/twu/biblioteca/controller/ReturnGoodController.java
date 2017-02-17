@@ -3,8 +3,12 @@ package com.twu.biblioteca.controller;
 import com.twu.biblioteca.Service.GoodStorageService;
 import com.twu.biblioteca.views.ReturnBookView;
 
-public class ReturnBookController implements BaseController {
-    GoodStorageService bookStorageService = GoodStorageService.getBookInstance();
+public class ReturnGoodController implements BaseController {
+    public ReturnGoodController(GoodStorageService goodStorageService) {
+        this.goodStorageService = goodStorageService;
+    }
+
+    GoodStorageService goodStorageService;
 
     @Override
     public void index() {
@@ -18,7 +22,7 @@ public class ReturnBookController implements BaseController {
         try {
             Integer id = Integer.parseInt(input);
 
-            if (bookStorageService.returnBookById(id)) {
+            if (goodStorageService.returnGoodById(id)) {
                 System.out.println("Thank you for returning the book.\n");
                 return null;
             } else {

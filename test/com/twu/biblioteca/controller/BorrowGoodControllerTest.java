@@ -14,15 +14,15 @@ import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
-public class BorrowBookControllerTest {
+public class BorrowGoodControllerTest {
 
-    BorrowBookController borrowBookController;
+    BorrowGoodController borrowGoodController;
     ByteArrayOutputStream byteArrayOutputStream;
     PrintStream printStream;
 
     @Before
     public void initial() {
-        borrowBookController = new BorrowBookController();
+        borrowGoodController = new BorrowGoodController(GoodStorageService.getBookInstance());
         byteArrayOutputStream = new ByteArrayOutputStream();
         printStream = System.out;
         System.setOut(new PrintStream(byteArrayOutputStream));
@@ -36,7 +36,7 @@ public class BorrowBookControllerTest {
     @Test
     public void index() {
 
-        borrowBookController.index();
+        borrowGoodController.index();
 
         String shouldbe = "please input the id of book you want to check out:\n";
 
@@ -49,11 +49,11 @@ public class BorrowBookControllerTest {
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(1);
-        when(goodStorageService.getBookById(1)).thenReturn(book);
+        when(goodStorageService.getGoodById(1)).thenReturn(book);
 
-        borrowBookController.goodStorageService = goodStorageService;
+        borrowGoodController.goodStorageService = goodStorageService;
 
-        BaseController action = borrowBookController.action("1");
+        BaseController action = borrowGoodController.action("1");
 
         assertNull(action);
 
@@ -66,11 +66,11 @@ public class BorrowBookControllerTest {
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
-        when(goodStorageService.getBookById(1)).thenReturn(book);
+        when(goodStorageService.getGoodById(1)).thenReturn(book);
 
-        borrowBookController.goodStorageService = goodStorageService;
+        borrowGoodController.goodStorageService = goodStorageService;
 
-        BaseController action = borrowBookController.action("1");
+        BaseController action = borrowGoodController.action("1");
 
         assertNull(action);
 
@@ -81,11 +81,11 @@ public class BorrowBookControllerTest {
 
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
 
-        when(goodStorageService.getBookById(1)).thenReturn(null);
+        when(goodStorageService.getGoodById(1)).thenReturn(null);
 
-        borrowBookController.goodStorageService = goodStorageService;
+        borrowGoodController.goodStorageService = goodStorageService;
 
-        BaseController action = borrowBookController.action("1");
+        BaseController action = borrowGoodController.action("1");
 
         assertNull(action);
 
