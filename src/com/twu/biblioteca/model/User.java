@@ -3,6 +3,31 @@ package com.twu.biblioteca.model;
 public class User {
 
     String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getAccount_id() {
+        return account_id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
     String account_id;
 
     public User(String name, String account_id, String password, String email, String phone, Boolean isAdmin) {
