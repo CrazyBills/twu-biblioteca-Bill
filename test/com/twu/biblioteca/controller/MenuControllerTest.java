@@ -31,10 +31,13 @@ public class MenuControllerTest {
     @Test
     public void indexTest() throws Exception {
 
-        String shouldReturn = "Welcome to Main Menu,Press your selection and enter:\n" +
+        String shouldReturn =  "Welcome to Main Menu,Press your selection and enter:\n" +
                 "1. List Books\n" +
                 "2. Borrow Books\n" +
                 "3. Return Books\n" +
+                "4. List Movies\n"+
+                "5. Borrow Movies\n"+
+                "6. Return Movies\n"+
                 "Note that you can input 'q' to return to former menu, input 'quit' to quit\n";
         menuController.index();
 
@@ -74,10 +77,32 @@ public class MenuControllerTest {
         assertTrue(returnBookController instanceof ReturnGoodController);
     }
 
+
+
+
     @Test
-    public void shouldReturnNull() throws UndefinedInputException {
-        BaseController returnedNull = menuController.action("4");
-        assertNull(returnedNull);
+    public void shouldReturnListMovieController() throws Exception {
+
+        BaseController action = menuController.action("4");
+
+        assertTrue(action instanceof GoodListController);
+
     }
+
+
+    @Test
+    public void shouldReturnBorrowMovieController() throws UndefinedInputException {
+
+        BaseController borrowBookController = menuController.action("5");
+        assertTrue(borrowBookController instanceof BorrowGoodController);
+    }
+
+    @Test
+    public void shouldReturnReturnMovieController() throws UndefinedInputException {
+        BaseController returnBookController = menuController.action("6");
+        assertTrue(returnBookController instanceof ReturnGoodController);
+    }
+
+
 
 }
