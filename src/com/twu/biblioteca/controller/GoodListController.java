@@ -10,9 +10,11 @@ public class GoodListController<T extends Good> implements BaseController {
 
     GoodListView<T> goodListView = new GoodListView();
     GoodStorageService<T> goodStorageService;
+    String type;
 
     public GoodListController(   GoodStorageService<T> goodStorageService){
         this.goodStorageService = goodStorageService;
+        this.type = goodStorageService.getStoredType();
     }
 
     @Override
@@ -21,6 +23,8 @@ public class GoodListController<T extends Good> implements BaseController {
         List<T> goodLists = goodStorageService.getGoodLists();
 
         goodListView.setGoodList(goodLists);
+
+        goodListView.setType(type);
 
         System.out.println(goodListView.render());
 

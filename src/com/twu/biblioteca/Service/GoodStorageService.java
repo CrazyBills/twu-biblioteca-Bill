@@ -2,6 +2,7 @@ package com.twu.biblioteca.Service;
 
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Good;
+import com.twu.biblioteca.model.Movie;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +11,17 @@ import java.util.stream.Collectors;
 public class GoodStorageService<T extends Good> {
 
     private static GoodStorageService<Book> bookInstance;
-    HashMap<Integer, T> storage;
+   HashMap<Integer, T> storage;
+
+    public String getStoredType() {
+        return storedType;
+    }
+
+    public void setStoredType(String storedType) {
+        this.storedType = storedType;
+    }
+
+    private String storedType;
 
     private GoodStorageService()
     {
@@ -31,6 +42,7 @@ public class GoodStorageService<T extends Good> {
             storage.put(5, new Book(5, "Falling Slowly", "Bob", "2005"));
             bookInstance.storage = storage;
 
+            bookInstance.setStoredType("book");
         }
         return bookInstance;
     }
@@ -98,5 +110,22 @@ public class GoodStorageService<T extends Good> {
             return null;
         else
             return collect.get(0);
+    }
+
+    private static GoodStorageService<Movie> movieInstance;
+
+    public static GoodStorageService<Movie> getMovieInstance() {
+        if (movieInstance == null) {
+            movieInstance  = new GoodStorageService<Movie>();
+
+            HashMap<Integer, Movie> storage;
+            storage = new HashMap<Integer, Movie>();
+            storage.put(1, new Movie(1,"Dr. Strange","2016","Scott",9));
+
+            movieInstance.storage = storage;
+            movieInstance.setStoredType("movie");
+
+        }
+        return movieInstance;
     }
 }

@@ -28,6 +28,7 @@ public class GoodListViewTest {
         testList.add(new Book(1, "Java Language", "GoodWeather", "2005"));
 
         goodListView.setGoodList(testList);
+        goodListView.setType("book");
 
         String expectedString = "Here are list of books:\nID\tName\n" +
                 "1\tJava Language\n" +

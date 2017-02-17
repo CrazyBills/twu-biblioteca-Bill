@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.controller.BaseController;
-import com.twu.biblioteca.controller.BookOperationFailException;
+import com.twu.biblioteca.controller.GoodOperationFailException;
 import com.twu.biblioteca.controller.UndefinedInputException;
 import com.twu.biblioteca.controller.WelcomeController;
 
@@ -43,7 +43,7 @@ public class BibliotecaApp {
                     controllerStack.pop();
             } catch (UndefinedInputException e) {
                 System.out.println("Select a valid option!\n");
-            } catch (BookOperationFailException e) {
+            } catch (GoodOperationFailException e) {
                 System.out.println(e.getMessage());
             }
 

@@ -7,6 +7,7 @@ import java.util.List;
 public class GoodListView<T extends Good> implements BaseView {
 
     List<T> goodList;
+    private String type;
 
     public void setGoodList(List<T> goodList) {
         this.goodList = goodList;
@@ -17,7 +18,7 @@ public class GoodListView<T extends Good> implements BaseView {
 
         StringBuffer resultBuffer = new StringBuffer();
 
-        resultBuffer.append("Here are list of books:\nID\tName\n");
+        resultBuffer.append("Here are list of "+type+"s:\nID\tName\n");
 
         goodList.stream().forEach(good -> {
             resultBuffer.append(good.getId());
@@ -26,8 +27,12 @@ public class GoodListView<T extends Good> implements BaseView {
             resultBuffer.append("\n");
         });
 
-        resultBuffer.append("please Enter the id of book to explore the details");
+        resultBuffer.append("please Enter the id of "+type+" to explore the details");
 
         return resultBuffer.toString();
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

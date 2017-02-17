@@ -4,5 +4,5 @@ public interface BaseController {
 
     public void index();
 
-    public BaseController action(String input) throws UndefinedInputException, BookOperationFailException;
+    public BaseController action(String input) throws UndefinedInputException, GoodOperationFailException;
 }

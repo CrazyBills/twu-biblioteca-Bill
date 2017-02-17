@@ -20,7 +20,7 @@ public class MenuController implements BaseController {
         if (input.equals("1"))
             return new GoodListController<Book>(GoodStorageService.getBookInstance());
         else if (input.equals("2"))
-            return new BorrowGoodController<Book>(GoodStorageService.getBookInstance());
+            return new BorrowGoodController(GoodStorageService.getBookInstance());
         else if (input.equals("3"))
             return new ReturnGoodController(GoodStorageService.getBookInstance());
         else if (input.equals("4"))

@@ -45,10 +45,7 @@ public class Book implements Good {
         return id;
     }
 
-    @Override
-    public String getType() {
-        return "book";
-    }
+
 
     public void setId(Integer id) {
         this.id = id;

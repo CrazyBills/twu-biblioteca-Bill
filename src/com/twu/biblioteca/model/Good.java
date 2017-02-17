@@ -7,6 +7,5 @@ public interface Good {
     public String getName();
     public Integer getId();
 
-    String getType();
 
 }

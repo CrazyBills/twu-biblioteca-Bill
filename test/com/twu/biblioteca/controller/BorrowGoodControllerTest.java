@@ -44,7 +44,7 @@ public class BorrowGoodControllerTest {
     }
 
     @Test
-    public void action() throws UndefinedInputException, BookOperationFailException {
+    public void action() throws UndefinedInputException, GoodOperationFailException {
 
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
@@ -60,8 +60,8 @@ public class BorrowGoodControllerTest {
         assertEquals("Thank you! Enjoy the book\n\n", byteArrayOutputStream.toString());
     }
 
-    @Test(expected = BookOperationFailException.class)
-    public void shouldFailBorrowBooks() throws UndefinedInputException, BookOperationFailException {
+    @Test(expected = GoodOperationFailException.class)
+    public void shouldFailBorrowBooks() throws UndefinedInputException, GoodOperationFailException {
 
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
@@ -76,8 +76,8 @@ public class BorrowGoodControllerTest {
 
     }
 
-    @Test(expected = BookOperationFailException.class)
-    public void shouldFailBorrowBooksWhenInputWrongID() throws UndefinedInputException, BookOperationFailException {
+    @Test(expected = GoodOperationFailException.class)
+    public void shouldFailBorrowBooksWhenInputWrongID() throws UndefinedInputException, GoodOperationFailException {
 
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
 
