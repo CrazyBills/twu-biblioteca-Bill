@@ -12,31 +12,40 @@ import java.util.List;
 
 public class MenuController implements BaseController {
 
-    BaseView menuView = new MenuView();
+    BaseView menuView;
 
     List<BaseController> menuList;
     UserManagementService userManagementService = UserManagementService.getInstance();
 
-    public MenuController(){
+    public MenuController() {
         menuList = new ArrayList<BaseController>();
 
-        if(userManagementService.getLoggedInUser().getAdmin()){
+        if (userManagementService.getLoggedInUser().getAdmin()) {
 
             buildAdminMenu();
-        }else{
+        } else {
             buildUserMenu();
         }
 
-
+        menuView = new MenuView(menuList);
     }
 
     private void buildUserMenu() {
 
+        menuList.add(new GoodListController<Book>(GoodStorageService.getBookInstance()));
+        menuList.add(new GoodListController<Movie>(GoodStorageService.getMovieInstance()));
+
+        menuList.add(new BorrowGoodController(GoodStorageService.getBookInstance()));
+        menuList.add(new ReturnGoodController(GoodStorageService.getBookInstance()));
+
+        menuList.add(new BorrowGoodController(GoodStorageService.getMovieInstance()));
+        menuList.add(new ReturnGoodController(GoodStorageService.getMovieInstance()));
 
     }
 
     private void buildAdminMenu() {
-
+        menuList.add(new GoodListController<Book>(GoodStorageService.getBookInstance()));
+        menuList.add(new GoodListController<Movie>(GoodStorageService.getMovieInstance()));
     }
 
     @Override
@@ -52,18 +61,16 @@ public class MenuController implements BaseController {
     @Override
     public BaseController action(String input) throws UndefinedInputException {
 
-        if (input.equals("1"))
-            return new GoodListController<Book>(GoodStorageService.getBookInstance());
-        else if (input.equals("2"))
-            return new BorrowGoodController(GoodStorageService.getBookInstance());
-        else if (input.equals("3"))
-            return new ReturnGoodController(GoodStorageService.getBookInstance());
-        else if (input.equals("4"))
-            return new GoodListController<Movie>(GoodStorageService.getMovieInstance());
-        else if(input.equals("5"))
-            return new BorrowGoodController(GoodStorageService.getMovieInstance());
-        else if(input.equals("6"))
-            return new ReturnGoodController(GoodStorageService.getMovieInstance());
-        else throw new UndefinedInputException();
+        try {
+            Integer i = Integer.parseInt(input);
+            i--;
+            if (i >= 0 && i < menuList.size()) {
+                return menuList.get(i);
+            }
+
+        } catch (NumberFormatException e) {
+
+        }
+        throw new UndefinedInputException();
     }
 }
