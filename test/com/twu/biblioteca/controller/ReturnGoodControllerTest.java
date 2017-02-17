@@ -52,8 +52,8 @@ public class ReturnGoodControllerTest {
         assertEquals("Thank you for returning the book.\n\n", byteArrayOutputStream.toString());
     }
 
-    @Test(expected = GoodOperationFailException.class)
-    public void shouldFailReturnBooks() throws UndefinedInputException, GoodOperationFailException {
+    @Test(expected = OperationFailException.class)
+    public void shouldFailReturnBooks() throws UndefinedInputException, OperationFailException {
 
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
@@ -68,8 +68,8 @@ public class ReturnGoodControllerTest {
 
     }
 
-    @Test(expected = GoodOperationFailException.class)
-    public void shouldFailReturnBooksWhenInputWrongID() throws UndefinedInputException, GoodOperationFailException {
+    @Test(expected = OperationFailException.class)
+    public void shouldFailReturnBooksWhenInputWrongID() throws UndefinedInputException, OperationFailException {
 
         GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
 

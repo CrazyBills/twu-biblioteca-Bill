@@ -35,7 +35,7 @@ public class WelcomeControllerTest {
 
         BaseController baseController = welcomeController.pressAnyKeyAction();
 
-        assertTrue(baseController instanceof MenuController);
+        assertTrue(baseController instanceof LoginController);
 
     }
 
@@ -47,7 +47,7 @@ public class WelcomeControllerTest {
     @Test
     public void shouldReturnMenuController1() {
         BaseController baseController = welcomeController.action("t");
-        assertTrue(baseController instanceof MenuController);
+        assertTrue(baseController instanceof LoginController);
     }
 
     @Test

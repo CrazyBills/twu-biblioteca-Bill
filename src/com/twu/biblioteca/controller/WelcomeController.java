@@ -6,7 +6,12 @@ public class WelcomeController implements BaseController {
 
     public BaseController pressAnyKeyAction() {
 
-        return new MenuController();
+        return new LoginController();
+    }
+
+    @Override
+    public String getDescription() {
+        return "welcome";
     }
 
     @Override

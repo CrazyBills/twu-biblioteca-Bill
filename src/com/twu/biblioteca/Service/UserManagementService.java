@@ -11,6 +11,8 @@ public class UserManagementService {
 
     private Map<String, User> storage;
 
+    private User loggedInUser;
+
     public static UserManagementService getInstance() {
 
         if (instance == null) {
@@ -33,6 +35,7 @@ public class UserManagementService {
         if (user != null) {
 
             if (user.getPassword().equals(password)) {
+                loggedInUser = user;
                 return user;
             }
         }
@@ -40,5 +43,11 @@ public class UserManagementService {
         return null;
     }
 
+    public void logout(){
+        this.loggedInUser = null;
+    }
 
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
 }

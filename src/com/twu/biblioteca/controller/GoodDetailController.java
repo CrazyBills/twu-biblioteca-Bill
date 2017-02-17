@@ -19,6 +19,11 @@ class GoodDetailController implements BaseController {
     }
 
     @Override
+    public String getDescription() {
+        return "get details";
+    }
+
+    @Override
     public void index() {
         Good good = goodStorageService.getGoodById(this.goodID);
         GoodDetailView goodDetailView = new GoodDetailView(good);

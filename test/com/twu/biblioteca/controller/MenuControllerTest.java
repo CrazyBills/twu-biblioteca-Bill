@@ -1,13 +1,17 @@
 package com.twu.biblioteca.controller;
 
+import com.twu.biblioteca.Service.UserManagementService;
+import com.twu.biblioteca.model.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MenuControllerTest {
 
@@ -17,7 +21,19 @@ public class MenuControllerTest {
 
     @Before
     public void initial() {
+
+        try {
+            Field loggedInUsers = UserManagementService.class.getDeclaredField("loggedInUser");
+            loggedInUsers.setAccessible(true);
+            loggedInUsers.set(UserManagementService.getInstance(), new User("John", "usr-test", "123456", "xoxo@gmail.com", "010-1010101"));
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
         menuController = new MenuController();
+
         byteArrayOutputStream = new ByteArrayOutputStream();
         printStream = System.out;
         System.setOut(new PrintStream(byteArrayOutputStream));

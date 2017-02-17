@@ -12,6 +12,11 @@ public class GoodListController<T extends Good> implements BaseController {
     GoodStorageService<T> goodStorageService;
     String type;
 
+    @Override
+    public String getDescription(){
+        return "List "+type+"s";
+    }
+
     public GoodListController(   GoodStorageService<T> goodStorageService){
         this.goodStorageService = goodStorageService;
         this.type = goodStorageService.getStoredType();

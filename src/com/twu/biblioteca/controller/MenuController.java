@@ -1,14 +1,48 @@
 package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.Service.GoodStorageService;
+import com.twu.biblioteca.Service.UserManagementService;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.views.BaseView;
 import com.twu.biblioteca.views.MenuView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MenuController implements BaseController {
 
     BaseView menuView = new MenuView();
+
+    List<BaseController> menuList;
+    UserManagementService userManagementService = UserManagementService.getInstance();
+
+    public MenuController(){
+        menuList = new ArrayList<BaseController>();
+
+        if(userManagementService.getLoggedInUser().getAdmin()){
+
+            buildAdminMenu();
+        }else{
+            buildUserMenu();
+        }
+
+
+    }
+
+    private void buildUserMenu() {
+
+
+    }
+
+    private void buildAdminMenu() {
+
+    }
+
+    @Override
+    public String getDescription() {
+        return "menu";
+    }
 
     @Override
     public void index() {

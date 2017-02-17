@@ -13,6 +13,10 @@ public class BorrowGoodController implements BaseController {
         this.type = goodStorageService.getStoredType();
     }
 
+    @Override
+    public String getDescription() {
+        return "Borrow "+type;
+    }
 
     @Override
     public void index() {
@@ -22,7 +26,7 @@ public class BorrowGoodController implements BaseController {
     }
 
     @Override
-    public BaseController action(String input) throws UndefinedInputException, GoodOperationFailException {
+    public BaseController action(String input) throws UndefinedInputException, OperationFailException {
 
         try {
             Integer id = Integer.parseInt(input);
@@ -32,7 +36,7 @@ public class BorrowGoodController implements BaseController {
                 System.out.println("Thank you! Enjoy the "+type+"\n");
                 return null;
             } else {
-                throw new GoodOperationFailException("That "+type+" is not available.\n");
+                throw new OperationFailException("That "+type+" is not available.\n");
             }
 
         } catch (NumberFormatException e) {
