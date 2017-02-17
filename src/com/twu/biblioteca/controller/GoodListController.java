@@ -13,14 +13,14 @@ public class GoodListController<T extends Good> implements BaseController {
     GoodStorageService<T> goodStorageService;
     String type;
 
-    @Override
-    public String getDescription(){
-        return "List "+type+"s";
-    }
-
-    public GoodListController(   GoodStorageService<T> goodStorageService){
+    public GoodListController(GoodStorageService<T> goodStorageService) {
         this.goodStorageService = goodStorageService;
         this.type = goodStorageService.getStoredType();
+    }
+
+    @Override
+    public String getDescription() {
+        return "List " + type + "s";
     }
 
     @Override
@@ -44,7 +44,7 @@ public class GoodListController<T extends Good> implements BaseController {
         T bookById = goodStorageService.getGoodById(id);
 
         if (bookById != null && bookById.getStatus() != 0) {
-            return new GoodDetailController(id,goodStorageService);
+            return new GoodDetailController(id, goodStorageService);
         } else {
             throw new UndefinedInputException();
         }

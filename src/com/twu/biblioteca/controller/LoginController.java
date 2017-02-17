@@ -9,18 +9,16 @@ import java.util.Scanner;
 
 public class LoginController implements BaseController {
 
+    Scanner scanner = new Scanner(System.in);
     private String password;
     private Boolean isLoggedIn = false;
-
-    public String getId() {
-        return id;
-    }
-
     private String id;
 
     private UserManagementService userManagementService = UserManagementService.getInstance();
 
-    Scanner scanner = new Scanner(System.in);
+    public String getId() {
+        return id;
+    }
 
     @Override
     public String getDescription() {
@@ -63,8 +61,7 @@ public class LoginController implements BaseController {
             return new MenuController();
         }
 
-        if(id.equals("q")||password.equals("q")) return null;
-
+        if (id.equals("q") || password.equals("q")) return null;
 
         throw new OperationFailException("login failed, check your id and password and try again!");
     }

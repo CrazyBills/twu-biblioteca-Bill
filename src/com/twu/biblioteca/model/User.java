@@ -3,6 +3,24 @@ package com.twu.biblioteca.model;
 public class User {
 
     String name;
+    String account_id;
+    String password;
+    String email;
+    String phone;
+    Boolean isAdmin = false;
+
+    public User(String name, String account_id, String password, String email, String phone, Boolean isAdmin) {
+        this.name = name;
+        this.account_id = account_id;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.isAdmin = isAdmin;
+    }
+
+    public User(String name, String account_id, String password, String email, String phone) {
+        this(name, account_id, password, email, phone, false);
+    }
 
     public String getName() {
         return name;
@@ -27,27 +45,6 @@ public class User {
     public Boolean getAdmin() {
         return isAdmin;
     }
-
-    String account_id;
-
-    public User(String name, String account_id, String password, String email, String phone, Boolean isAdmin) {
-        this.name = name;
-        this.account_id = account_id;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-        this.isAdmin = isAdmin;
-    }
-
-    public User(String name, String account_id, String password, String email, String phone) {
-        this(name, account_id, password, email, phone, false);
-    }
-
-    String password;
-    String email;
-    String phone;
-
-    Boolean isAdmin = false;
 
     @Override
     public boolean equals(Object o) {

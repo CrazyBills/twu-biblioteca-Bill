@@ -22,9 +22,9 @@ public class BorrowedListViewTest {
         BorrowedListView borrowedListView = new BorrowedListView(goodList);
 
         String shouleBe = "Here are the checked list:\n" +
-                            "Name\tUser ID\tUser Name\tE-Mail\tPhone\n" +
-                            "php\tusr-test\tJohn\txoxo@gmail.com\t010-1010101\n" +
-                            "input 'q' to return to previous menu";
+                "Name\tUser ID\tUser Name\tE-Mail\tPhone\n" +
+                "php\tusr-test\tJohn\txoxo@gmail.com\t010-1010101\n" +
+                "input 'q' to return to previous menu";
 
         assertEquals(shouleBe, borrowedListView.render());
     }

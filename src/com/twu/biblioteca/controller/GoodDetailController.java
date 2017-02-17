@@ -7,13 +7,12 @@ import com.twu.biblioteca.views.GoodDetailView;
 
 class GoodDetailController implements BaseController {
 
+    GoodStorageService goodStorageService;
+    private Integer goodID;
     public GoodDetailController(Integer goodID, GoodStorageService goodStorageService) {
         this.goodID = goodID;
         this.goodStorageService = goodStorageService;
     }
-
-    GoodStorageService goodStorageService;
-    private Integer goodID;
 
     public Integer getGoodID() {
         return goodID;

@@ -1,9 +1,9 @@
 package com.twu.biblioteca.model;
 
-public class Movie implements Good{
+public class Movie implements Good {
 
     private Integer id;
-    private String  name;
+    private String name;
     private String year;
     private String director;
     private Integer rating;
@@ -36,7 +36,6 @@ public class Movie implements Good{
         buffer.append(this.year);
         buffer.append("\t");
         buffer.append(this.rating);
-
 
         return buffer.toString();
     }

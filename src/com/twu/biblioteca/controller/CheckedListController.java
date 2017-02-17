@@ -8,8 +8,6 @@ import java.util.List;
 
 public class CheckedListController implements BaseController {
 
-
-
     @Override
     public String getDescription() {
         return "Checked list";
@@ -19,7 +17,7 @@ public class CheckedListController implements BaseController {
     public BaseView index() {
 
         List checkedGoodLists = GoodStorageService.getBookInstance().getCheckedGoodLists();
-       checkedGoodLists.addAll( GoodStorageService.getMovieInstance().getCheckedGoodLists());
+        checkedGoodLists.addAll(GoodStorageService.getMovieInstance().getCheckedGoodLists());
         BorrowedListView borrowedListView = new BorrowedListView(checkedGoodLists);
         return borrowedListView;
     }

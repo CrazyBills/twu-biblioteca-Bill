@@ -2,7 +2,7 @@ package com.twu.biblioteca.views;
 
 import com.twu.biblioteca.model.User;
 
-public class LoginSuccessView implements BaseView{
+public class LoginSuccessView implements BaseView {
 
     private final User loggedInUser;
 

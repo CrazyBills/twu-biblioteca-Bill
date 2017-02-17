@@ -10,6 +10,6 @@ public class ReturnBookView implements BaseView {
 
     @Override
     public String render() {
-        return "please input the id of "+type+" you want to return:";
+        return "please input the id of " + type + " you want to return:";
     }
 }

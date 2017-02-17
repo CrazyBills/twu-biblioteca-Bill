@@ -29,13 +29,12 @@ public class BibliotecaApp {
 
             String input;
 
-            if(view!=null){
+            if (view != null) {
                 System.out.println(view.render());
                 input = scanner.nextLine();
-            }else {
+            } else {
                 input = "";
             }
-
 
             if (input.equals("q")) {
                 controllerStack.pop();

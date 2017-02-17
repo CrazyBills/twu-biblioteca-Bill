@@ -5,18 +5,17 @@ import com.twu.biblioteca.views.BaseView;
 import com.twu.biblioteca.views.ReturnBookView;
 
 public class ReturnGoodController implements BaseController {
+    GoodStorageService goodStorageService;
+    String type;
+
     public ReturnGoodController(GoodStorageService goodStorageService) {
         this.goodStorageService = goodStorageService;
         this.type = goodStorageService.getStoredType();
     }
 
-    GoodStorageService goodStorageService;
-
-    String type;
-
     @Override
     public String getDescription() {
-        return "Return "+type;
+        return "Return " + type;
     }
 
     @Override

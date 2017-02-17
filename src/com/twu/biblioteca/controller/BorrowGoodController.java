@@ -16,7 +16,7 @@ public class BorrowGoodController implements BaseController {
 
     @Override
     public String getDescription() {
-        return "Borrow "+type;
+        return "Borrow " + type;
     }
 
     @Override
@@ -34,10 +34,10 @@ public class BorrowGoodController implements BaseController {
 
             if (goodStorageService.borrowGoodId(id)) {
 
-                System.out.println("Thank you! Enjoy the "+type+"\n");
+                System.out.println("Thank you! Enjoy the " + type + "\n");
                 return null;
             } else {
-                throw new OperationFailException("That "+type+" is not available.\n");
+                throw new OperationFailException("That " + type + " is not available.\n");
             }
 
         } catch (NumberFormatException e) {

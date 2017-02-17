@@ -9,6 +9,6 @@ public class BorrowBookView implements BaseView {
 
     @Override
     public String render() {
-        return "please input the id of "+type+" you want to check out:";
+        return "please input the id of " + type + " you want to check out:";
     }
 }

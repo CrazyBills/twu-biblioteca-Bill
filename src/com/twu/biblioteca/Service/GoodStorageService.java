@@ -11,20 +11,11 @@ import java.util.stream.Collectors;
 public class GoodStorageService<T extends Good> {
 
     private static GoodStorageService<Book> bookInstance;
-   HashMap<Integer, T> storage;
-
-    public String getStoredType() {
-        return storedType;
-    }
-
-    public void setStoredType(String storedType) {
-        this.storedType = storedType;
-    }
-
+    private static GoodStorageService<Movie> movieInstance;
+    HashMap<Integer, T> storage;
     private String storedType;
 
-    private GoodStorageService()
-    {
+    private GoodStorageService() {
 
     }
 
@@ -45,13 +36,36 @@ public class GoodStorageService<T extends Good> {
             book.setStatus(0);
             book.setBorrowerID("usr-test");
 
-            storage.put(6,book);
+            storage.put(6, book);
 
             bookInstance.storage = storage;
 
             bookInstance.setStoredType("book");
         }
         return bookInstance;
+    }
+
+    public static GoodStorageService<Movie> getMovieInstance() {
+        if (movieInstance == null) {
+            movieInstance = new GoodStorageService<Movie>();
+
+            HashMap<Integer, Movie> storage;
+            storage = new HashMap<Integer, Movie>();
+            storage.put(1, new Movie(1, "Dr. Strange", "2016", "Scott", 9));
+
+            movieInstance.storage = storage;
+            movieInstance.setStoredType("movie");
+
+        }
+        return movieInstance;
+    }
+
+    public String getStoredType() {
+        return storedType;
+    }
+
+    public void setStoredType(String storedType) {
+        this.storedType = storedType;
     }
 
     public List<T> getGoodLists() {
@@ -125,22 +139,5 @@ public class GoodStorageService<T extends Good> {
             return null;
         else
             return collect.get(0);
-    }
-
-    private static GoodStorageService<Movie> movieInstance;
-
-    public static GoodStorageService<Movie> getMovieInstance() {
-        if (movieInstance == null) {
-            movieInstance  = new GoodStorageService<Movie>();
-
-            HashMap<Integer, Movie> storage;
-            storage = new HashMap<Integer, Movie>();
-            storage.put(1, new Movie(1,"Dr. Strange","2016","Scott",9));
-
-            movieInstance.storage = storage;
-            movieInstance.setStoredType("movie");
-
-        }
-        return movieInstance;
     }
 }

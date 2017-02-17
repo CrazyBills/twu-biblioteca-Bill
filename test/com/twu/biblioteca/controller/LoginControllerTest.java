@@ -31,8 +31,6 @@ public class LoginControllerTest {
         System.setOut(printStream);
     }
 
-
-
     @Test
     public void index() throws Exception {
 
@@ -45,9 +43,9 @@ public class LoginControllerTest {
 
         String shouldBe = "please input your library number:\nplease input your password:\n";
 
-        assertEquals(shouldBe,byteArrayOutputStream.toString());
+        assertEquals(shouldBe, byteArrayOutputStream.toString());
 
-        assertEquals("ll-111",loginController.getId());
+        assertEquals("ll-111", loginController.getId());
 
     }
 
@@ -74,9 +72,6 @@ public class LoginControllerTest {
         assertNotNull(UserManagementService.getInstance().getLoggedInUser());
 
     }
-
-
-
 
 
 }

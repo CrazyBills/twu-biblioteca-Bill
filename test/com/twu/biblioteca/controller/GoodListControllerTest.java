@@ -43,7 +43,6 @@ public class GoodListControllerTest {
                 "5\tFalling Slowly\n" +
                 "please Enter the id of book to explore the details";
 
-
         assertEquals(expectedString, goodListController.index().render());
 
     }

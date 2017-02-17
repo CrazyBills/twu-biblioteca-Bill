@@ -46,6 +46,10 @@ public class Book implements Good {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String getBorrowerID() {
 
@@ -56,10 +60,6 @@ public class Book implements Good {
     public String setBorrowerID(String borrowerID) {
         this.borrowerID = borrowerID;
         return null;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public int getStatus() {
@@ -93,9 +93,8 @@ public class Book implements Good {
         return result;
     }
 
-
     @Override
-    public String getGoodDetails(){
+    public String getGoodDetails() {
         StringBuffer buffer = new StringBuffer();
 
         buffer.append("Here are details of book ");
@@ -110,7 +109,6 @@ public class Book implements Good {
         buffer.append(this.getAuthor());
         buffer.append("\t");
         buffer.append(this.getPublished());
-
 
         return buffer.toString();
     }

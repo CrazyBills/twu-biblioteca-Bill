@@ -17,7 +17,7 @@ public class WelcomeController implements BaseController {
 
     @Override
     public BaseView index() {
-       return new WelcomeView();
+        return new WelcomeView();
     }
 
     @Override

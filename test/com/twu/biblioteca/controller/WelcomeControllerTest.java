@@ -54,7 +54,7 @@ public class WelcomeControllerTest {
     public void shouldPrintWelcomeMessage() {
 
         assertEquals("Welcome to Library!\n" +
-                "press 'Enter' to continue...",welcomeController.index().render());
+                "press 'Enter' to continue...", welcomeController.index().render());
 
     }
 

@@ -12,7 +12,6 @@ import static org.junit.Assert.assertTrue;
 
 public class MenuControllerTest {
 
-
     MenuController menuController;
     ByteArrayOutputStream byteArrayOutputStream;
     PrintStream printStream;
@@ -20,7 +19,7 @@ public class MenuControllerTest {
     @Before
     public void initial() {
 
-       Initializer.initialUser();
+        Initializer.initialUser();
 
         menuController = new MenuController();
 
@@ -28,8 +27,6 @@ public class MenuControllerTest {
         printStream = System.out;
         System.setOut(new PrintStream(byteArrayOutputStream));
     }
-
-
 
     @After
     public void destory() {
@@ -39,17 +36,16 @@ public class MenuControllerTest {
     @Test
     public void indexTest() throws Exception {
 
-        String shouldReturn =  "Welcome to Main Menu,Press your selection and enter:\n" +
+        String shouldReturn = "Welcome to Main Menu,Press your selection and enter:\n" +
                 "1. List books\n" +
                 "2. List movies\n" +
                 "3. Borrow book\n" +
                 "4. Return book\n" +
                 "5. Borrow movie\n" +
-                "6. Return movie\n"+
+                "6. Return movie\n" +
                 "Note that you can input 'q' to return to former menu, input 'quit' to quit";
 
-
-        assertEquals(shouldReturn,  menuController.index().render());
+        assertEquals(shouldReturn, menuController.index().render());
 
     }
 
@@ -85,9 +81,6 @@ public class MenuControllerTest {
         assertTrue(returnBookController instanceof ReturnGoodController);
     }
 
-
-
-
     @Test
     public void shouldReturnListMovieController() throws Exception {
 
@@ -96,7 +89,6 @@ public class MenuControllerTest {
         assertTrue(action instanceof GoodListController);
 
     }
-
 
     @Test
     public void shouldReturnBorrowMovieController() throws UndefinedInputException {
@@ -110,7 +102,6 @@ public class MenuControllerTest {
         BaseController returnBookController = menuController.action("6");
         assertTrue(returnBookController instanceof ReturnGoodController);
     }
-
 
 
 }
