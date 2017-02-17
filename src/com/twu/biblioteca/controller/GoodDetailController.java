@@ -2,6 +2,7 @@ package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.Service.GoodStorageService;
 import com.twu.biblioteca.model.Good;
+import com.twu.biblioteca.views.BaseView;
 import com.twu.biblioteca.views.GoodDetailView;
 
 class GoodDetailController implements BaseController {
@@ -24,10 +25,10 @@ class GoodDetailController implements BaseController {
     }
 
     @Override
-    public void index() {
+    public BaseView index() {
         Good good = goodStorageService.getGoodById(this.goodID);
         GoodDetailView goodDetailView = new GoodDetailView(good);
-        System.out.println(goodDetailView.render());
+        return goodDetailView;
     }
 
     @Override

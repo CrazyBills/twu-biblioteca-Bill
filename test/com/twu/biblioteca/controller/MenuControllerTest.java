@@ -1,19 +1,17 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.Service.UserManagementService;
-import com.twu.biblioteca.model.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.Field;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MenuControllerTest {
+
 
     MenuController menuController;
     ByteArrayOutputStream byteArrayOutputStream;
@@ -22,15 +20,7 @@ public class MenuControllerTest {
     @Before
     public void initial() {
 
-        try {
-            Field loggedInUsers = UserManagementService.class.getDeclaredField("loggedInUser");
-            loggedInUsers.setAccessible(true);
-            loggedInUsers.set(UserManagementService.getInstance(), new User("John", "usr-test", "123456", "xoxo@gmail.com", "010-1010101"));
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+       Initializer.initialUser();
 
         menuController = new MenuController();
 
@@ -38,6 +28,8 @@ public class MenuControllerTest {
         printStream = System.out;
         System.setOut(new PrintStream(byteArrayOutputStream));
     }
+
+
 
     @After
     public void destory() {
@@ -48,16 +40,16 @@ public class MenuControllerTest {
     public void indexTest() throws Exception {
 
         String shouldReturn =  "Welcome to Main Menu,Press your selection and enter:\n" +
-                "1. List Books\n" +
-                "2. Borrow Books\n" +
-                "3. Return Books\n" +
-                "4. List Movies\n"+
-                "5. Borrow Movies\n"+
-                "6. Return Movies\n"+
-                "Note that you can input 'q' to return to former menu, input 'quit' to quit\n";
-        menuController.index();
+                "1. List books\n" +
+                "2. List movies\n" +
+                "3. Borrow book\n" +
+                "4. Return book\n" +
+                "5. Borrow movie\n" +
+                "6. Return movie\n"+
+                "Note that you can input 'q' to return to former menu, input 'quit' to quit";
 
-        assertEquals(shouldReturn, byteArrayOutputStream.toString());
+
+        assertEquals(shouldReturn,  menuController.index().render());
 
     }
 
@@ -83,13 +75,13 @@ public class MenuControllerTest {
     @Test
     public void shouldReturnBorrowBookController() throws UndefinedInputException {
 
-        BaseController borrowBookController = menuController.action("2");
+        BaseController borrowBookController = menuController.action("3");
         assertTrue(borrowBookController instanceof BorrowGoodController);
     }
 
     @Test
     public void shouldReturnReturnBookController() throws UndefinedInputException {
-        BaseController returnBookController = menuController.action("3");
+        BaseController returnBookController = menuController.action("4");
         assertTrue(returnBookController instanceof ReturnGoodController);
     }
 
@@ -99,7 +91,7 @@ public class MenuControllerTest {
     @Test
     public void shouldReturnListMovieController() throws Exception {
 
-        BaseController action = menuController.action("4");
+        BaseController action = menuController.action("2");
 
         assertTrue(action instanceof GoodListController);
 

@@ -8,6 +8,7 @@ public class Book implements Good {
     String published;
     //simple Status 0 means unavailable;
     int status = 1;
+    private String borrowerID;
 
     public Book(Integer id, String name, String author, String published) {
         this.id = id;
@@ -45,7 +46,17 @@ public class Book implements Good {
         return id;
     }
 
+    @Override
+    public String getBorrowerID() {
 
+        return borrowerID;
+    }
+
+    @Override
+    public String setBorrowerID(String borrowerID) {
+        this.borrowerID = borrowerID;
+        return null;
+    }
 
     public void setId(Integer id) {
         this.id = id;

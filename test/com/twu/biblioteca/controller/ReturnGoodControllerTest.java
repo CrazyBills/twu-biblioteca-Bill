@@ -35,8 +35,7 @@ public class ReturnGoodControllerTest {
     @Test
     public void index() throws Exception {
 
-        returnGoodController.index();
-        assertEquals("please input the id of book you want to return:\n", byteArrayOutputStream.toString());
+        assertEquals("please input the id of book you want to return:", returnGoodController.index().render());
     }
 
     @Test

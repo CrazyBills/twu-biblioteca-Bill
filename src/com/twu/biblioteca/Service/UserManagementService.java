@@ -43,6 +43,11 @@ public class UserManagementService {
         return null;
     }
 
+    public User getUserById(String id){
+
+        return storage.get(id);
+    }
+
     public void logout(){
         this.loggedInUser = null;
     }

@@ -36,11 +36,11 @@ public class BorrowGoodControllerTest {
     @Test
     public void index() {
 
-        borrowGoodController.index();
 
-        String shouldbe = "please input the id of book you want to check out:\n";
 
-        assertEquals(shouldbe, byteArrayOutputStream.toString());
+        String shouldbe = "please input the id of book you want to check out:";
+
+        assertEquals(shouldbe,borrowGoodController.index().render() );
     }
 
     @Test

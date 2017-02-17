@@ -41,10 +41,10 @@ public class GoodListControllerTest {
                 "3\tAngularJS\n" +
                 "4\tComputer Architecture\n" +
                 "5\tFalling Slowly\n" +
-                "please Enter the id of book to explore the details\n";
+                "please Enter the id of book to explore the details";
 
-        goodListController.index();
-        assertEquals(expectedString, byteArrayOutputStream.toString());
+
+        assertEquals(expectedString, goodListController.index().render());
 
     }
 

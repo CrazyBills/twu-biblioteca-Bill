@@ -1,6 +1,7 @@
 package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.Service.GoodStorageService;
+import com.twu.biblioteca.views.BaseView;
 import com.twu.biblioteca.views.ReturnBookView;
 
 public class ReturnGoodController implements BaseController {
@@ -19,9 +20,9 @@ public class ReturnGoodController implements BaseController {
     }
 
     @Override
-    public void index() {
+    public BaseView index() {
         ReturnBookView returnBookView = new ReturnBookView(type);
-        System.out.println(returnBookView.render());
+        return returnBookView;
     }
 
     @Override

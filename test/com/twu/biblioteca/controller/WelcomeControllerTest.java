@@ -53,10 +53,10 @@ public class WelcomeControllerTest {
     @Test
     public void shouldPrintWelcomeMessage() {
 
-        welcomeController.index();
+
 
         assertEquals("Welcome to Library!\n" +
-                "input any string to continue...\n", byteArrayOutputStream.toString());
+                "input any string to continue...",welcomeController.index().render());
 
     }
 

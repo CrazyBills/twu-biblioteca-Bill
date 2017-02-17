@@ -1,6 +1,7 @@
 package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.Service.GoodStorageService;
+import com.twu.biblioteca.views.BaseView;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,11 +36,11 @@ public class BookDetailControllerTest {
         String expectedString = "Here are details of book 1:\n" +
                 "ID\tName\tAuthor\tPublished Years\n" +
                 "1\tJava Language\tGoodWeather\t2005" +
-                "\n\ninput any string to return previous menu!\n";
+                "\n\ninput any string to return previous menu!";
 
-        goodDetailController.index();
+        BaseView index = goodDetailController.index();
 
-        assertEquals(expectedString, byteArrayOutputStream.toString());
+        assertEquals(expectedString, index.render());
 
     }
 

@@ -1,5 +1,6 @@
 package com.twu.biblioteca.Service;
 
+import com.twu.biblioteca.controller.Initializer;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Good;
 import org.junit.After;
@@ -19,6 +20,8 @@ public class BookStorageServiceTest {
 
     @Before
     public void setUp() throws Exception {
+
+        Initializer.initialUser();
 
         HashMap<Integer, Book> storage;
         storage = new HashMap<Integer, Book>();

@@ -2,6 +2,7 @@ package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.Service.UserManagementService;
 import com.twu.biblioteca.model.User;
+import com.twu.biblioteca.views.BaseView;
 
 import java.util.Scanner;
 
@@ -23,11 +24,12 @@ public class LoginController implements BaseController {
     }
 
     @Override
-    public void index() {
+    public BaseView index() {
         userManagementService.logout();
 
         inputId();
         System.out.println("please input your password:");
+        return null;
     }
 
     private void inputId() {

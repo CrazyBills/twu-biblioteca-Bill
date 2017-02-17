@@ -1,5 +1,6 @@
 package com.twu.biblioteca.controller;
 
+import com.twu.biblioteca.views.BaseView;
 import com.twu.biblioteca.views.WelcomeView;
 
 public class WelcomeController implements BaseController {
@@ -15,10 +16,8 @@ public class WelcomeController implements BaseController {
     }
 
     @Override
-    public void index() {
-
-        String messae = new WelcomeView().render();
-        System.out.println(messae);
+    public BaseView index() {
+       return new WelcomeView();
     }
 
     @Override

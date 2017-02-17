@@ -4,6 +4,7 @@ import com.twu.biblioteca.controller.BaseController;
 import com.twu.biblioteca.controller.OperationFailException;
 import com.twu.biblioteca.controller.UndefinedInputException;
 import com.twu.biblioteca.controller.WelcomeController;
+import com.twu.biblioteca.views.BaseView;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -24,7 +25,12 @@ public class BibliotecaApp {
 
             BaseController presentController = controllerStack.peek();
 
-            presentController.index();
+            BaseView view = presentController.index();
+
+            if(view!=null){
+                System.out.println(view.render());
+            }
+
 
             String input = scanner.next();
 

@@ -2,6 +2,7 @@ package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.Service.GoodStorageService;
 import com.twu.biblioteca.model.Good;
+import com.twu.biblioteca.views.BaseView;
 import com.twu.biblioteca.views.GoodListView;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class GoodListController<T extends Good> implements BaseController {
     }
 
     @Override
-    public void index() {
+    public BaseView index() {
 
         List<T> goodLists = goodStorageService.getGoodLists();
 
@@ -31,7 +32,7 @@ public class GoodListController<T extends Good> implements BaseController {
 
         goodListView.setType(type);
 
-        System.out.println(goodListView.render());
+        return goodListView;
 
     }
 

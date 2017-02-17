@@ -7,5 +7,6 @@ public interface Good {
     public String getName();
     public Integer getId();
 
-
+    public String getBorrowerID();
+    public String setBorrowerID(String borrowerID);
 }

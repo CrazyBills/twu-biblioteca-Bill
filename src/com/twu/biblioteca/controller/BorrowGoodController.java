@@ -1,6 +1,7 @@
 package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.Service.GoodStorageService;
+import com.twu.biblioteca.views.BaseView;
 import com.twu.biblioteca.views.BorrowBookView;
 
 public class BorrowGoodController implements BaseController {
@@ -19,10 +20,10 @@ public class BorrowGoodController implements BaseController {
     }
 
     @Override
-    public void index() {
+    public BaseView index() {
         BorrowBookView borrowBookView = new BorrowBookView(type);
 
-        System.out.println(borrowBookView.render());
+        return borrowBookView;
     }
 
     @Override

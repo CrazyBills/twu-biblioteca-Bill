@@ -54,8 +54,8 @@ public class MenuController implements BaseController {
     }
 
     @Override
-    public void index() {
-        System.out.println(menuView.render());
+    public BaseView index() {
+        return menuView;
     }
 
     @Override

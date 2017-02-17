@@ -54,6 +54,13 @@ public class GoodStorageService<T extends Good> {
         return resultList;
     }
 
+    public List<T> getCheckedGoodLists() {
+
+        List<T> resultList = storage.values().stream().filter(book -> book.getStatus() == 0).collect(Collectors.toList());
+
+        return resultList;
+    }
+
     public T getGoodById(Integer id) {
 
         return storage.get(id);
@@ -66,6 +73,7 @@ public class GoodStorageService<T extends Good> {
 
         if (bookById.getStatus() != 0) {
             bookById.setStatus(0);
+            bookById.setBorrowerID(UserManagementService.getInstance().getLoggedInUser().getAccount_id());
             return true;
         } else {
             return false;
@@ -77,8 +85,13 @@ public class GoodStorageService<T extends Good> {
 
         if (bookById == null) return false;
 
+        return returnGood(bookById);
+    }
+
+    private boolean returnGood(T bookById) {
         if (bookById.getStatus() == 0) {
             bookById.setStatus(1);
+            bookById.setBorrowerID(null);
             return true;
         } else {
             return false;
@@ -90,12 +103,7 @@ public class GoodStorageService<T extends Good> {
 
         if (book == null) return false;
 
-        if (book.getStatus() == 0) {
-            book.setStatus(1);
-            return true;
-        } else {
-            return false;
-        }
+        return returnGood((T) book);
 
     }
 
