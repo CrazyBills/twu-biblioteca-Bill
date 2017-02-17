@@ -18,7 +18,7 @@ public class LoginSuccessView implements BaseView{
         buffer.append("Login successfully!!\n");
         buffer.append(loggedInUser.toString());
 
-        buffer.append("\n");
+        buffer.append("\npress 'Enter' to continue!");
 
         return buffer.toString();
     }

@@ -63,6 +63,9 @@ public class LoginController implements BaseController {
             return new MenuController();
         }
 
+        if(id.equals("q")||password.equals("q")) return null;
+
+
         throw new OperationFailException("login failed, check your id and password and try again!");
     }
 }
