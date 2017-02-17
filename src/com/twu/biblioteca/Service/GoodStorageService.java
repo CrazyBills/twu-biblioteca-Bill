@@ -40,6 +40,13 @@ public class GoodStorageService<T extends Good> {
             storage.put(3, new Book(3, "AngularJS", "Google inc.", "2015"));
             storage.put(4, new Book(4, "Computer Architecture", "John", "2005"));
             storage.put(5, new Book(5, "Falling Slowly", "Bob", "2005"));
+
+            Book book = new Book(6, "Refactoring", "Martin", "2010");
+            book.setStatus(0);
+            book.setBorrowerID("usr-test");
+
+            storage.put(6,book);
+
             bookInstance.storage = storage;
 
             bookInstance.setStoredType("book");

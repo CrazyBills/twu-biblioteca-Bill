@@ -75,4 +75,14 @@ public class User {
         result = 31 * result + (isAdmin != null ? isAdmin.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer();
+        sb.append("name='").append(name).append('\'');
+        sb.append(", account_id='").append(account_id).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", phone='").append(phone).append('\'');
+        return sb.toString();
+    }
 }

@@ -36,7 +36,7 @@ public class LoginControllerTest {
     @Test
     public void index() throws Exception {
 
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("ll-111\n".getBytes());
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("ll-111\n12345\n".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
 
         loginController.scanner = scanner;
@@ -60,14 +60,14 @@ public class LoginControllerTest {
 
     @Test
     public void shouldReturnMenu() throws UndefinedInputException, OperationFailException {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("usr-test\n".getBytes());
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("usr-test\n123456\n".getBytes());
         Scanner scanner = new Scanner(byteArrayInputStream);
 
         loginController.scanner = scanner;
 
         loginController.index();
 
-        BaseController action = loginController.action("123456");
+        BaseController action = loginController.action("");
 
         assertTrue(action instanceof MenuController);
 

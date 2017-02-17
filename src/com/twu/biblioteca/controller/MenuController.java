@@ -46,6 +46,7 @@ public class MenuController implements BaseController {
     private void buildAdminMenu() {
         menuList.add(new GoodListController<Book>(GoodStorageService.getBookInstance()));
         menuList.add(new GoodListController<Movie>(GoodStorageService.getMovieInstance()));
+        menuList.add(new CheckedListController());
     }
 
     @Override

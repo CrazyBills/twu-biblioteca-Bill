@@ -17,7 +17,7 @@ public class WelcomeViewTest {
     @Test
     public void shouldPrintWelcome() {
 
-        assertEquals("Welcome to Library!\ninput any string to continue...", welcomeView.render());
+        assertEquals("Welcome to Library!\npress 'Enter' to continue...", welcomeView.render());
     }
 
 

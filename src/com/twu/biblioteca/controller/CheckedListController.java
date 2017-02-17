@@ -6,7 +6,7 @@ import com.twu.biblioteca.views.BorrowedListView;
 
 import java.util.List;
 
-public class BorrowedListController implements BaseController {
+public class CheckedListController implements BaseController {
 
 
 
