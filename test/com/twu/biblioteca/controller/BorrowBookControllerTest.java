@@ -1,6 +1,6 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.Service.BookStorageService;
+import com.twu.biblioteca.Service.GoodStorageService;
 import com.twu.biblioteca.model.Book;
 import org.junit.After;
 import org.junit.Before;
@@ -46,12 +46,12 @@ public class BorrowBookControllerTest {
     @Test
     public void action() throws UndefinedInputException, BookOperationFailException {
 
-        BookStorageService bookStorageService = spy(BookStorageService.getInstance());
+        GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(1);
-        when(bookStorageService.getBookById(1)).thenReturn(book);
+        when(goodStorageService.getBookById(1)).thenReturn(book);
 
-        borrowBookController.bookStorageService = bookStorageService;
+        borrowBookController.goodStorageService = goodStorageService;
 
         BaseController action = borrowBookController.action("1");
 
@@ -63,12 +63,12 @@ public class BorrowBookControllerTest {
     @Test(expected = BookOperationFailException.class)
     public void shouldFailBorrowBooks() throws UndefinedInputException, BookOperationFailException {
 
-        BookStorageService bookStorageService = spy(BookStorageService.getInstance());
+        GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
         Book book = new Book(1, "Java Language", "GoodWeather", "2005");
         book.setStatus(0);
-        when(bookStorageService.getBookById(1)).thenReturn(book);
+        when(goodStorageService.getBookById(1)).thenReturn(book);
 
-        borrowBookController.bookStorageService = bookStorageService;
+        borrowBookController.goodStorageService = goodStorageService;
 
         BaseController action = borrowBookController.action("1");
 
@@ -79,11 +79,11 @@ public class BorrowBookControllerTest {
     @Test(expected = BookOperationFailException.class)
     public void shouldFailBorrowBooksWhenInputWrongID() throws UndefinedInputException, BookOperationFailException {
 
-        BookStorageService bookStorageService = spy(BookStorageService.getInstance());
+        GoodStorageService goodStorageService = spy(GoodStorageService.getBookInstance());
 
-        when(bookStorageService.getBookById(1)).thenReturn(null);
+        when(goodStorageService.getBookById(1)).thenReturn(null);
 
-        borrowBookController.bookStorageService = bookStorageService;
+        borrowBookController.goodStorageService = goodStorageService;
 
         BaseController action = borrowBookController.action("1");
 

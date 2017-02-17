@@ -1,12 +1,12 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.Service.BookStorageService;
-import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.Service.GoodStorageService;
+import com.twu.biblioteca.model.Good;
 import com.twu.biblioteca.views.BookDetailView;
 
 class BookDetailController implements BaseController {
 
-    BookStorageService bookStorageService = BookStorageService.getInstance();
+    GoodStorageService goodStorageService = GoodStorageService.getBookInstance();
     private Integer bookID;
 
     public BookDetailController(Integer bookID) {
@@ -19,8 +19,8 @@ class BookDetailController implements BaseController {
 
     @Override
     public void index() {
-        Book book = bookStorageService.getBookById(this.bookID);
-        BookDetailView bookDetailView = new BookDetailView(book);
+        Good good = goodStorageService.getBookById(this.bookID);
+        BookDetailView bookDetailView = new BookDetailView(good);
         System.out.println(bookDetailView.render());
     }
 

@@ -1,24 +1,24 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.Service.BookStorageService;
+import com.twu.biblioteca.Service.GoodStorageService;
 import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.views.BookListView;
+import com.twu.biblioteca.views.GoodListView;
 
 import java.util.List;
 
 public class BookListController implements BaseController {
 
-    BookListView bookListView = new BookListView();
-    BookStorageService bookStorageService = BookStorageService.getInstance();
+    GoodListView<Book> goodListView = new GoodListView();
+    GoodStorageService<Book> goodStorageService = GoodStorageService.getBookInstance();
 
     @Override
     public void index() {
 
-        List<Book> bookLists = bookStorageService.getBookLists();
+        List<Book> goodLists = goodStorageService.getBookLists();
 
-        bookListView.setBookList(bookLists);
+        goodListView.setGoodList(goodLists);
 
-        System.out.println(bookListView.render());
+        System.out.println(goodListView.render());
 
     }
 
@@ -27,7 +27,7 @@ public class BookListController implements BaseController {
 
         Integer id = Integer.parseInt(input);
 
-        Book bookById = bookStorageService.getBookById(id);
+        Book bookById = goodStorageService.getBookById(id);
 
         if (bookById != null && bookById.getStatus() != 0) {
             return new BookDetailController(id);

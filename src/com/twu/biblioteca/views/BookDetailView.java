@@ -1,36 +1,22 @@
 package com.twu.biblioteca.views;
 
-import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Good;
 
 public class BookDetailView implements BaseView {
 
-    Book book;
+    Good good;
 
-    public BookDetailView(Book book) {
-        this.book = book;
+    public BookDetailView(Good good) {
+        this.good = good;
     }
 
     @Override
     public String render() {
 
         StringBuffer buffer = new StringBuffer();
-
-        buffer.append("Here are details of book ");
-
-        buffer.append(book.getId());
-        buffer.append(":\nID\tName\tAuthor\tPublished Years\n");
-
-        buffer.append(book.getId());
-        buffer.append("\t");
-        buffer.append(book.getBookName());
-        buffer.append("\t");
-        buffer.append(book.getAuthor());
-        buffer.append("\t");
-        buffer.append(book.getPublished());
-
+        buffer.append(good.getBookDetails());
         buffer.append("\n\n");
         buffer.append("input any string to return previous menu!");
-
         return buffer.toString();
     }
 }

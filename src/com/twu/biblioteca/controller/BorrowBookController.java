@@ -1,11 +1,11 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.Service.BookStorageService;
+import com.twu.biblioteca.Service.GoodStorageService;
 import com.twu.biblioteca.views.BorrowBookView;
 
 public class BorrowBookController implements BaseController {
 
-    BookStorageService bookStorageService = BookStorageService.getInstance();
+    GoodStorageService goodStorageService = GoodStorageService.getBookInstance();
 
     @Override
     public void index() {
@@ -20,7 +20,7 @@ public class BorrowBookController implements BaseController {
         try {
             Integer id = Integer.parseInt(input);
 
-            if (bookStorageService.borrowBookId(id)) {
+            if (goodStorageService.borrowBookId(id)) {
                 System.out.println("Thank you! Enjoy the book\n");
                 return null;
             } else {

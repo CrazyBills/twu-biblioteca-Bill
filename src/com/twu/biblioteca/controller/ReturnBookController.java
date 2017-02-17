@@ -1,10 +1,10 @@
 package com.twu.biblioteca.controller;
 
-import com.twu.biblioteca.Service.BookStorageService;
+import com.twu.biblioteca.Service.GoodStorageService;
 import com.twu.biblioteca.views.ReturnBookView;
 
 public class ReturnBookController implements BaseController {
-    BookStorageService bookStorageService = BookStorageService.getInstance();
+    GoodStorageService bookStorageService = GoodStorageService.getBookInstance();
 
     @Override
     public void index() {

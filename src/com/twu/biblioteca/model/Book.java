@@ -1,17 +1,17 @@
 package com.twu.biblioteca.model;
 
-public class Book {
+public class Book implements Good {
 
     Integer id;
-    String bookName;
+    String name;
     String author;
     String published;
     //simple Status 0 means unavailable;
     int status = 1;
 
-    public Book(Integer id, String bookName, String author, String published) {
+    public Book(Integer id, String name, String author, String published) {
         this.id = id;
-        this.bookName = bookName;
+        this.name = name;
         this.author = author;
         this.published = published;
     }
@@ -24,12 +24,12 @@ public class Book {
         this.published = published;
     }
 
-    public String getBookName() {
-        return bookName;
+    public String getName() {
+        return name;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAuthor() {
@@ -65,7 +65,7 @@ public class Book {
         Book book = (Book) o;
 
         if (!id.equals(book.id)) return false;
-        if (!bookName.equals(book.bookName)) return false;
+        if (!name.equals(book.name)) return false;
         if (!author.equals(book.author)) return false;
         return published.equals(book.published);
 
@@ -74,9 +74,31 @@ public class Book {
     @Override
     public int hashCode() {
         int result = id.hashCode();
-        result = 31 * result + bookName.hashCode();
+        result = 31 * result + name.hashCode();
         result = 31 * result + author.hashCode();
         result = 31 * result + published.hashCode();
         return result;
+    }
+
+
+    @Override
+    public String getBookDetails(){
+        StringBuffer buffer = new StringBuffer();
+
+        buffer.append("Here are details of book ");
+
+        buffer.append(this.getId());
+        buffer.append(":\nID\tName\tAuthor\tPublished Years\n");
+
+        buffer.append(this.getId());
+        buffer.append("\t");
+        buffer.append(this.getName());
+        buffer.append("\t");
+        buffer.append(this.getAuthor());
+        buffer.append("\t");
+        buffer.append(this.getPublished());
+
+
+        return buffer.toString();
     }
 }

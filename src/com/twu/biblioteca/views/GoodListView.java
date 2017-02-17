@@ -1,15 +1,15 @@
 package com.twu.biblioteca.views;
 
-import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Good;
 
 import java.util.List;
 
-public class BookListView implements BaseView {
+public class GoodListView<T extends Good> implements BaseView {
 
-    List<Book> bookList;
+    List<T> goodList;
 
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
+    public void setGoodList(List<T> goodList) {
+        this.goodList = goodList;
     }
 
     @Override
@@ -19,10 +19,10 @@ public class BookListView implements BaseView {
 
         resultBuffer.append("Here are list of books:\nID\tName\n");
 
-        bookList.stream().forEach(book -> {
-            resultBuffer.append(book.getId());
+        goodList.stream().forEach(good -> {
+            resultBuffer.append(good.getId());
             resultBuffer.append("\t");
-            resultBuffer.append(book.getBookName());
+            resultBuffer.append(good.getName());
             resultBuffer.append("\n");
         });
 
